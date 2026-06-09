@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASKR Clothing – Wear Confidence. Wear ASKR.</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero-home { min-height: 100vh; display:flex; align-items:center; position:relative; overflow:hidden; background:var(--black); padding: 100px 0 60px; }
+    .hero-bg-gradient { position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 75% 50%, rgba(255,107,0,0.1) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 5% 90%, rgba(212,160,23,0.07) 0%, transparent 55%); pointer-events:none; }
+    .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .hero-img-container { position:relative; }
+    .hero-img-frame { position:relative; border-radius:30px; overflow:hidden; aspect-ratio:3/4; max-width:480px; margin:0 auto; }
+    .hero-img-frame::before { content:''; position:absolute;inset:0;background:linear-gradient(to top, rgba(13,13,13,0.6) 0%, transparent 50%);z-index:1; }
+    .hero-img-frame img { width:100%;height:100%;object-fit:cover; }
+    .hero-img-accent { position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:rgba(255,107,0,0.12);border:1px solid rgba(255,107,0,0.25);border-radius:24px;backdrop-filter:blur(10px); display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px; z-index:2; }
+    .hero-img-accent .num { font-size:1.8rem;font-weight:900;color:var(--orange);font-family:var(--font-heading); }
+    .hero-img-accent .lab { font-size:0.7rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:1px; }
+    .hero-float-card { position:absolute;bottom:-10px;left:-24px;z-index:3;background:rgba(23,23,23,0.9);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px 20px;display:flex;gap:12px;align-items:center;animation:float 4s ease-in-out infinite; }
+    .float-card-icon { width:40px;height:40px;border-radius:10px;background:rgba(255,107,0,0.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem; }
+    .float-card-text .title { font-size:0.82rem;font-weight:700;color:var(--ivory); }
+    .float-card-text .sub { font-size:0.72rem;color:var(--gray-600); }
+
+    .marquee-section { background:linear-gradient(90deg, var(--orange), var(--orange-dark));padding:14px 0;overflow:hidden; }
+    .marquee-track { display:flex;gap:48px;animation:marquee 20s linear infinite;white-space:nowrap; }
+    .marquee-track span { font-size:0.82rem;font-weight:700;color:var(--white);letter-spacing:2px;text-transform:uppercase; }
+    .marquee-dot { color:rgba(255,255,255,0.5);font-size:0.5rem; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    .categories-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+    .cat-card-wide { grid-column:span 2; }
+
+    .trending-strip { display:flex;gap:24px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory; }
+    .trending-strip::-webkit-scrollbar { height:4px; }
+    .trending-strip::-webkit-scrollbar-thumb { background:var(--orange);border-radius:2px; }
+    .trending-strip .product-card { flex:0 0 260px;scroll-snap-align:start; }
+
+    .brands-strip { display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;opacity:0.4; }
+    .brand-logo-text { font-family:var(--font-heading);font-size:1.1rem;font-weight:800;color:var(--gray-700);letter-spacing:3px;text-transform:uppercase; }
+
+    .testimonials-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+
+    @media(max-width:1024px){ .hero-grid{grid-template-columns:1fr;} .categories-grid{grid-template-columns:repeat(2,1fr);} .cat-card-wide{grid-column:span 2;} .testimonials-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:768px){ .categories-grid,.testimonials-grid{grid-template-columns:1fr;} .cat-card-wide{grid-column:span 1;} }
+  </style>
+</head>
+<body>
+<div id="navbar-container" data-page="home"></div>
+
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <section class="hero-home">
+    <div class="hero-bg-gradient"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content animate-fadeInLeft">
+          <div class="hero-badge">🔥 New Season Collection 2025</div>
+          <h1 class="hero-title">
+            Wear Confidence.<br>
+            <span class="accent">Wear ASKR.</span>
+          </h1>
+          <p class="hero-subtitle">Discover premium fashion that blends luxury with modern streetwear. Every piece crafted for those who dare to stand out.</p>
+          <div class="hero-actions">
+            <a href="men.html" class="btn btn-primary btn-lg">Shop Men 👔</a>
+            <a href="women.html" class="btn btn-secondary btn-lg">Shop Women 👗</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item"><div class="stat-number">50K+</div><div class="stat-label">Happy Customers</div></div>
+            <div class="stat-item"><div class="stat-number">2K+</div><div class="stat-label">Premium Products</div></div>
+            <div class="stat-item"><div class="stat-number">4.9★</div><div class="stat-label">Avg Rating</div></div>
+          </div>
+        </div>
+        <div class="hero-img-container animate-fadeInRight">
+          <div class="hero-img-frame">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Fashion Model" loading="lazy" />
+          </div>
+          <div class="hero-img-accent">
+            <span class="num">500+</span>
+            <span class="lab">Styles</span>
+          </div>
+          <div class="hero-float-card">
+            <div class="float-card-icon">🚀</div>
+            <div class="float-card-text">
+              <div class="title">Free Delivery</div>
+              <div class="sub">Orders above ₹999</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span>NEW ARRIVALS</span><span class="marquee-dot">●</span>
+      <span>FREE SHIPPING ABOVE ₹999</span><span class="marquee-dot">●</span>
+      <span>PREMIUM QUALITY</span><span class="marquee-dot">●</span>
+      <span>EASY RETURNS</span><span class="marquee-dot">●</span>
+      <span>TRENDING STYLES</span><span class="marquee-dot">●</span>
+      <span>EXCLUSIVE OFFERS</span><span class="marquee-dot">●</span>
+      <span>NEW ARRIVALS</span><span class="marquee-dot">●</span>
+      <span>FREE SHIPPING ABOVE ₹999</span><span class="marquee-dot">●</span>
+      <span>PREMIUM QUALITY</span><span class="marquee-dot">●</span>
+      <span>EASY RETURNS</span><span class="marquee-dot">●</span>
+      <span>TRENDING STYLES</span><span class="marquee-dot">●</span>
+      <span>EXCLUSIVE OFFERS</span><span class="marquee-dot">●</span>
+    </div>
+  </div>
+
+  <!-- FEATURED CATEGORIES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">🗂️ Browse By Category</div>
+        <h2 class="section-title">Shop By <span class="highlight">Collection</span></h2>
+        <p class="section-subtitle">Explore our carefully curated fashion collections for every style</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="categories-grid reveal">
+        <div class="category-card cat-card-wide">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Women" loading="lazy" />
+          <div class="category-overlay"></div>
+          <div class="category-content">
+            <div class="category-name">Women's</div>
+            <div class="category-count">320+ Styles</div>
+          </div>
+          <a href="women.html" class="category-arrow">→</a>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&q=80" alt="Men" loading="lazy" />
+          <div class="category-overlay"></div>
+          <div class="category-content">
+            <div class="category-name">Men's</div>
+            <div class="category-count">280+ Styles</div>
+          </div>
+          <a href="men.html" class="category-arrow">→</a>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=600&q=80" alt="Kids" loading="lazy" />
+          <div class="category-overlay"></div>
+          <div class="category-content">
+            <div class="category-name">Kids</div>
+            <div class="category-count">180+ Styles</div>
+          </div>
+          <a href="kids.html" class="category-arrow">→</a>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80" alt="Accessories" loading="lazy" />
+          <div class="category-overlay"></div>
+          <div class="category-content">
+            <div class="category-name">Accessories</div>
+            <div class="category-count">120+ Items</div>
+          </div>
+          <a href="home.html" class="category-arrow">→</a>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?w=600&q=80" alt="Sale" loading="lazy" />
+          <div class="category-overlay" style="background:linear-gradient(to top, rgba(255,107,0,0.7) 0%, transparent 60%)"></div>
+          <div class="category-content">
+            <div class="category-name" style="color:var(--white)">Sale 🔥</div>
+            <div class="category-count" style="color:var(--orange-light)">Up to 70% Off</div>
+          </div>
+          <a href="home.html" class="category-arrow">→</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW ARRIVALS -->
+  <section class="section" id="new-arrivals" style="background:var(--charcoal)">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">✨ Just Landed</div>
+        <h2 class="section-title">New <span class="highlight">Arrivals</span></h2>
+        <p class="section-subtitle">Fresh styles added weekly – be the first to own them</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="grid-4 reveal">
+        <!-- Product 1 -->
+        <div class="product-card" data-name="urban black hoodie">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80" alt="Hoodie" loading="lazy" />
+            <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="p1" data-name="Urban Black Hoodie" data-price="1299">🤍</button>
+              <a href="product.html" class="product-action-btn" title="View">👁</a>
+            </div>
+            <div class="product-overlay">
+              <button class="btn btn-primary btn-sm btn-add-cart" data-id="p1" data-name="Urban Black Hoodie" data-price="1299">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Men · Hoodies</div>
+            <div class="product-name">Urban Black Hoodie</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(128)</span></div>
+            <div class="product-price">
+              <span class="price-current">₹1,299</span>
+              <span class="price-original">₹1,999</span>
+              <span class="price-discount">35% off</span>
+            </div>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card" data-name="floral kurti elegant">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80" alt="Kurti" loading="lazy" />
+            <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="p2" data-name="Floral Kurti" data-price="849">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay">
+              <button class="btn btn-primary btn-sm btn-add-cart" data-id="p2" data-name="Floral Kurti" data-price="849">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Women · Kurtis</div>
+            <div class="product-name">Floral Print Kurti</div>
+            <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(95)</span></div>
+            <div class="product-price">
+              <span class="price-current">₹849</span>
+              <span class="price-original">₹1,299</span>
+              <span class="price-discount">35% off</span>
+            </div>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card" data-name="slim fit jeans premium denim">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80" alt="Jeans" loading="lazy" />
+            <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="p3" data-name="Slim Fit Jeans" data-price="1599">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay">
+              <button class="btn btn-primary btn-sm btn-add-cart" data-id="p3" data-name="Slim Fit Jeans" data-price="1599">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Men · Jeans</div>
+            <div class="product-name">Slim Fit Premium Denim</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(214)</span></div>
+            <div class="product-price">
+              <span class="price-current">₹1,599</span>
+              <span class="price-original">₹2,499</span>
+              <span class="price-discount">36% off</span>
+            </div>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-card" data-name="summer dress flowy elegant">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=400&q=80" alt="Dress" loading="lazy" />
+            <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="p4" data-name="Flowy Summer Dress" data-price="1199">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay">
+              <button class="btn btn-primary btn-sm btn-add-cart" data-id="p4" data-name="Flowy Summer Dress" data-price="1199">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Women · Dresses</div>
+            <div class="product-name">Flowy Summer Dress</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(176)</span></div>
+            <div class="product-price">
+              <span class="price-current">₹1,199</span>
+              <span class="price-original">₹1,899</span>
+              <span class="price-discount">37% off</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px" class="reveal">
+        <a href="men.html" class="btn btn-outline-orange btn-lg" style="margin-right:16px">View Men's ›</a>
+        <a href="women.html" class="btn btn-outline-orange btn-lg">View Women's ›</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING -->
+  <section class="section" id="trending">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">🔥 What's Hot</div>
+        <h2 class="section-title"><span class="highlight">Trending</span> Now</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="trending-strip reveal">
+        <div class="product-card" data-name="oversized graphic tee">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80" alt="T-Shirt" loading="lazy" />
+            <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="t1" data-name="Oversized Graphic Tee" data-price="699">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="t1" data-name="Oversized Graphic Tee" data-price="699">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Men · T-Shirts</div>
+            <div class="product-name">Oversized Graphic Tee</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(302)</span></div>
+            <div class="product-price"><span class="price-current">₹699</span><span class="price-original">₹999</span></div>
+          </div>
+        </div>
+        <div class="product-card" data-name="silk saree premium traditional">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80" alt="Saree" loading="lazy" />
+            <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="t2" data-name="Silk Saree" data-price="2499">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="t2" data-name="Silk Saree" data-price="2499">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Women · Sarees</div>
+            <div class="product-name">Premium Silk Saree</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(156)</span></div>
+            <div class="product-price"><span class="price-current">₹2,499</span><span class="price-original">₹3,999</span></div>
+          </div>
+        </div>
+        <div class="product-card" data-name="bomber jacket streetwear">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80" alt="Jacket" loading="lazy" />
+            <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="t3" data-name="Bomber Jacket" data-price="2199">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="t3" data-name="Bomber Jacket" data-price="2199">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Men · Jackets</div>
+            <div class="product-name">Street Bomber Jacket</div>
+            <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(88)</span></div>
+            <div class="product-price"><span class="price-current">₹2,199</span><span class="price-original">₹3,499</span></div>
+          </div>
+        </div>
+        <div class="product-card" data-name="kids colorful t-shirt fun boys">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1519278409-1f56fdda7fe5?w=400&q=80" alt="Kids" loading="lazy" />
+            <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="t4" data-name="Kids Graphic Tee" data-price="499">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="t4" data-name="Kids Graphic Tee" data-price="499">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Kids · Boys</div>
+            <div class="product-name">Fun Graphic T-Shirt</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(64)</span></div>
+            <div class="product-price"><span class="price-current">₹499</span><span class="price-original">₹799</span></div>
+          </div>
+        </div>
+        <div class="product-card" data-name="formal shirt premium white">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400&q=80" alt="Shirt" loading="lazy" />
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="t5" data-name="Premium White Shirt" data-price="1099">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="t5" data-name="Premium White Shirt" data-price="1099">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Men · Shirts</div>
+            <div class="product-name">Premium Formal Shirt</div>
+            <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(201)</span></div>
+            <div class="product-price"><span class="price-current">₹1,099</span><span class="price-original">₹1,599</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <section class="section" id="best-sellers" style="background:var(--charcoal)">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">🏆 Most Loved</div>
+        <h2 class="section-title">Best <span class="highlight">Sellers</span></h2>
+        <p class="section-subtitle">Our customers' all-time favorites</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="grid-4 reveal">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&q=80" alt="Top" loading="lazy"/>
+            <div class="product-badges"><span class="product-badge badge-trending">Best Seller</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="bs1" data-name="Casual Crop Top" data-price="599">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="bs1" data-name="Casual Crop Top" data-price="599">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Women · Tops</div>
+            <div class="product-name">Casual Crop Top</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(523)</span></div>
+            <div class="product-price"><span class="price-current">₹599</span><span class="price-original">₹899</span><span class="price-discount">33% off</span></div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=400&q=80" alt="Jacket" loading="lazy"/>
+            <div class="product-badges"><span class="product-badge badge-trending">Best Seller</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="bs2" data-name="Leather Biker Jacket" data-price="3499">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="bs2" data-name="Leather Biker Jacket" data-price="3499">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Men · Jackets</div>
+            <div class="product-name">Leather Biker Jacket</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(389)</span></div>
+            <div class="product-price"><span class="price-current">₹3,499</span><span class="price-original">₹5,999</span><span class="price-discount">42% off</span></div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=400&q=80" alt="Dress" loading="lazy"/>
+            <div class="product-badges"><span class="product-badge badge-trending">Best Seller</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="bs3" data-name="Midi Floral Dress" data-price="1499">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="bs3" data-name="Midi Floral Dress" data-price="1499">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Women · Dresses</div>
+            <div class="product-name">Midi Floral Dress</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(445)</span></div>
+            <div class="product-price"><span class="price-current">₹1,499</span><span class="price-original">₹2,299</span><span class="price-discount">35% off</span></div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80" alt="Sweatshirt" loading="lazy"/>
+            <div class="product-badges"><span class="product-badge badge-trending">Best Seller</span></div>
+            <div class="product-actions">
+              <button class="product-action-btn" data-wishlist="bs4" data-name="ASKR Signature Sweatshirt" data-price="1199">🤍</button>
+              <a href="product.html" class="product-action-btn">👁</a>
+            </div>
+            <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="bs4" data-name="ASKR Signature Sweatshirt" data-price="1199">Add to Cart</button></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Unisex · Hoodies</div>
+            <div class="product-name">ASKR Signature Sweatshirt</div>
+            <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(612)</span></div>
+            <div class="product-price"><span class="price-current">₹1,199</span><span class="price-original">₹1,799</span><span class="price-discount">33% off</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ASKR (mini) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">💎 Our Promise</div>
+        <h2 class="section-title">Why <span class="highlight">ASKR?</span></h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="grid-3 reveal">
+        <div class="feature-card">
+          <div class="feature-icon">🎽</div>
+          <div class="feature-title">Premium Fabrics</div>
+          <div class="feature-desc">Crafted from the finest materials — breathable, durable, and luxuriously comfortable.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <div class="feature-title">Fast Delivery</div>
+          <div class="feature-desc">Express delivery across India. Same-day dispatch for orders placed before 2PM.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-title">Easy Returns</div>
+          <div class="feature-desc">30-day hassle-free return policy. No questions asked, full refunds guaranteed.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-title">Secure Payments</div>
+          <div class="feature-desc">256-bit SSL encryption. Your payment data is always protected with us.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">Latest Trends</div>
+          <div class="feature-desc">Stay ahead of fashion. New collections drop every week inspired by global runways.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎧</div>
+          <div class="feature-title">24/7 Support</div>
+          <div class="feature-desc">Our fashion experts are available around the clock to assist you with anything.</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px" class="reveal">
+        <a href="features.html" class="btn btn-outline-orange btn-lg">Explore All Features ›</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background:var(--charcoal)">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge">💬 Real Reviews</div>
+        <h2 class="section-title">What Our <span class="highlight">Customers</span> Say</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="testimonials-grid reveal">
+        <div class="review-card">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">A</div>
+            <div><div class="reviewer-name">Aarav Mehta</div><div class="reviewer-date">Dec 2024</div></div>
+          </div>
+          <div class="stars" style="margin-bottom:10px">★★★★★</div>
+          <div class="review-text">"Absolutely love ASKR! The hoodie I ordered is incredibly soft and the fit is perfect. Will definitely order again."</div>
+          <div class="review-verified">✅ Verified Purchase</div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar" style="background:linear-gradient(135deg,#C4A882,#8B6914)">P</div>
+            <div><div class="reviewer-name">Priya Sharma</div><div class="reviewer-date">Nov 2024</div></div>
+          </div>
+          <div class="stars" style="margin-bottom:10px">★★★★★</div>
+          <div class="review-text">"The kurti collection is stunning! Premium fabric, beautiful print, and fast delivery. ASKR is my go-to for fashion."</div>
+          <div class="review-verified">✅ Verified Purchase</div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar" style="background:linear-gradient(135deg,#4FC3F7,#0288D1)">R</div>
+            <div><div class="reviewer-name">Rohan Patel</div><div class="reviewer-date">Oct 2024</div></div>
+          </div>
+          <div class="stars" style="margin-bottom:10px">★★★★★</div>
+          <div class="review-text">"Best streetwear brand in India! The bomber jacket is fire. Gets compliments every single time I wear it. 10/10."</div>
+          <div class="review-verified">✅ Verified Purchase</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section">
+    <div class="container">
+      <div class="newsletter-section reveal">
+        <div class="section-badge" style="margin-bottom:16px">📬 Stay Connected</div>
+        <h2 class="newsletter-title">Get Exclusive <span style="color:var(--orange)">Offers & Updates</span></h2>
+        <p class="newsletter-subtitle">Subscribe to our newsletter and get 10% off your first order!</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('🎉 Subscribed! Check your inbox for your discount code.','success')">
+          <input type="email" class="form-control" placeholder="Enter your email address" required />
+          <button type="submit" class="btn btn-primary">Subscribe 🚀</button>
+        </form>
+        <p style="font-size:0.78rem;color:var(--gray-500);margin-top:12px">No spam, unsubscribe anytime. 50,000+ happy subscribers.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="footer-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

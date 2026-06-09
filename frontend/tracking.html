@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Order – ASKR Clothing</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="navbar-container" data-page=""></div>
+<div class="page-wrapper">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">Track <span>Order</span></h1>
+      <p class="page-hero-subtitle">Real-time updates on your ASKR order</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container-sm">
+      <!-- SEARCH -->
+      <div style="background:var(--charcoal);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.07);margin-bottom:40px">
+        <h3 style="font-size:1rem;font-weight:700;color:var(--ivory);margin-bottom:16px">Track Your Order</h3>
+        <div style="display:flex;gap:12px">
+          <input type="text" class="form-control" placeholder="Enter Order ID (e.g. #ASKR2024-7842)" value="#ASKR2024-7842" style="flex:1" />
+          <button class="btn btn-primary" onclick="showToast('Order found!','success')">Track Now</button>
+        </div>
+      </div>
+
+      <!-- ORDER INFO -->
+      <div style="background:var(--charcoal);border-radius:20px;padding:32px;border:1px solid rgba(255,255,255,0.07);margin-bottom:32px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:28px">
+          <div>
+            <div style="font-size:0.8rem;color:var(--gray-600);margin-bottom:4px">ORDER ID</div>
+            <div style="font-size:1.1rem;font-weight:700;color:var(--orange)">#ASKR2024-7842</div>
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--gray-600);margin-bottom:4px">ORDER DATE</div>
+            <div style="font-size:0.9rem;font-weight:600;color:var(--ivory)">Dec 27, 2024</div>
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--gray-600);margin-bottom:4px">TOTAL</div>
+            <div style="font-size:0.9rem;font-weight:600;color:var(--ivory)">₹6,079</div>
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--gray-600);margin-bottom:4px">EST. DELIVERY</div>
+            <div style="font-size:0.9rem;font-weight:600;color:#4CAF50">Dec 31 – Jan 2</div>
+          </div>
+          <span class="order-status status-shipped" style="align-self:center">🚚 Shipped</span>
+        </div>
+
+        <!-- ITEMS -->
+        <div style="display:flex;gap:12px;padding:16px;background:var(--gray-100);border-radius:12px;margin-bottom:28px;flex-wrap:wrap">
+          <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=80&q=80" style="width:60px;height:70px;object-fit:cover;border-radius:8px" alt="Hoodie"/>
+          <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=80&q=80" style="width:60px;height:70px;object-fit:cover;border-radius:8px" alt="Dress"/>
+          <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=80&q=80" style="width:60px;height:70px;object-fit:cover;border-radius:8px" alt="Jeans"/>
+          <div style="margin-left:8px;align-self:center">
+            <div style="font-size:0.9rem;font-weight:600;color:var(--ivory)">3 items in this order</div>
+            <div style="font-size:0.8rem;color:var(--gray-600)">Urban Black Hoodie + 2 more</div>
+          </div>
+        </div>
+
+        <!-- TIMELINE -->
+        <h4 style="font-size:0.9rem;font-weight:700;color:var(--ivory);margin-bottom:24px;text-transform:uppercase;letter-spacing:1px">Shipment Progress</h4>
+        <div class="timeline">
+          <div class="timeline-item completed">
+            <div class="timeline-dot">✓</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Order Placed</div>
+              <div class="timeline-desc">Your order has been successfully placed and confirmed.</div>
+              <div class="timeline-time">Dec 27, 2024 · 3:24 PM</div>
+            </div>
+          </div>
+          <div class="timeline-item completed">
+            <div class="timeline-dot">✓</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Order Packed</div>
+              <div class="timeline-desc">Your items have been carefully packed and are ready for dispatch.</div>
+              <div class="timeline-time">Dec 27, 2024 · 8:10 PM</div>
+            </div>
+          </div>
+          <div class="timeline-item active">
+            <div class="timeline-dot">🚚</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Shipped</div>
+              <div class="timeline-desc">Your order is on its way! Tracking ID: <span style="color:var(--orange);font-weight:600">DELHIV-9823741</span></div>
+              <div class="timeline-time">Dec 28, 2024 · 9:45 AM</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">📦</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Out for Delivery</div>
+              <div class="timeline-desc">Your order will be delivered today between 10AM – 6PM.</div>
+              <div class="timeline-time">Expected: Dec 31, 2024</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">🏠</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Delivered</div>
+              <div class="timeline-desc">Your order will be delivered to your doorstep.</div>
+              <div class="timeline-time">Expected: Dec 31 – Jan 2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DELIVERY ADDRESS -->
+      <div style="background:var(--charcoal);border-radius:16px;padding:24px;border:1px solid rgba(255,255,255,0.07);margin-bottom:32px">
+        <h4 style="font-size:0.9rem;font-weight:700;color:var(--ivory);margin-bottom:16px">📍 Delivery Address</h4>
+        <div style="font-size:0.88rem;color:var(--gray-600);line-height:1.8">
+          <strong style="color:var(--ivory)">Ashwath Krishna</strong><br>
+          123, MG Road, Bengaluru, Karnataka – 560001<br>
+          📱 +91 98765 43210
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="home.html" class="btn btn-outline-orange">Continue Shopping</a>
+        <button class="btn btn-secondary" onclick="showToast('Support team will contact you shortly','success')">🎧 Need Help?</button>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="footer-container"></div>
+<div class="toast-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

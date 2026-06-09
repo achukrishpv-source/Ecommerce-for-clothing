@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment – ASKR Clothing</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="navbar-container" data-page=""></div>
+<div class="page-wrapper">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">Secure <span>Payment</span></h1>
+      <p class="page-hero-subtitle">Your payment information is encrypted and secure</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="progress-steps" style="margin-bottom:48px">
+        <div class="step completed"><div class="step-circle">🛒</div><div class="step-label">Cart</div></div>
+        <div class="step completed"><div class="step-circle">📍</div><div class="step-label">Address</div></div>
+        <div class="step completed"><div class="step-circle">🚚</div><div class="step-label">Delivery</div></div>
+        <div class="step active"><div class="step-circle">💳</div><div class="step-label">Payment</div></div>
+        <div class="step"><div class="step-circle">✅</div><div class="step-label">Confirm</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start">
+        <div>
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory);margin-bottom:24px">Choose Payment Method</h3>
+
+          <!-- UPI -->
+          <div class="payment-method selected" data-form="upiForm">
+            <input type="radio" name="payment" value="upi" checked />
+            <span class="payment-icon-img">📱</span>
+            <div><div class="payment-method-name">UPI Payment</div><div class="payment-method-desc">PhonePe, Google Pay, Paytm, BHIM & more</div></div>
+          </div>
+          <div id="upiForm" style="background:var(--gray-100);border-radius:12px;padding:20px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06)">
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label">UPI ID</label>
+              <input type="text" class="form-control" placeholder="yourname@upi" />
+            </div>
+            <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+              <button style="padding:8px 12px;background:var(--gray-200);border-radius:8px;font-size:0.78rem;color:var(--ivory);border:1px solid rgba(255,255,255,0.1)">📲 PhonePe</button>
+              <button style="padding:8px 12px;background:var(--gray-200);border-radius:8px;font-size:0.78rem;color:var(--ivory);border:1px solid rgba(255,255,255,0.1)">🟢 GPay</button>
+              <button style="padding:8px 12px;background:var(--gray-200);border-radius:8px;font-size:0.78rem;color:var(--ivory);border:1px solid rgba(255,255,255,0.1)">💙 Paytm</button>
+              <button style="padding:8px 12px;background:var(--gray-200);border-radius:8px;font-size:0.78rem;color:var(--ivory);border:1px solid rgba(255,255,255,0.1)">🏦 BHIM</button>
+            </div>
+          </div>
+
+          <!-- CREDIT CARD -->
+          <div class="payment-method" data-form="cardForm">
+            <input type="radio" name="payment" value="card" />
+            <span class="payment-icon-img">💳</span>
+            <div><div class="payment-method-name">Credit / Debit Card</div><div class="payment-method-desc">Visa, Mastercard, Rupay, Amex</div></div>
+          </div>
+          <div id="cardForm" class="payment-detail-form" style="display:none;background:var(--gray-100);border-radius:12px;padding:20px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06)">
+            <div class="form-group"><label class="form-label">Card Number</label><input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" /></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div class="form-group"><label class="form-label">Expiry Date</label><input type="text" class="form-control" placeholder="MM / YY" /></div>
+              <div class="form-group"><label class="form-label">CVV</label><input type="password" class="form-control" placeholder="•••" maxlength="4" /></div>
+            </div>
+            <div class="form-group" style="margin-bottom:0"><label class="form-label">Cardholder Name</label><input type="text" class="form-control" placeholder="Name as on card" /></div>
+          </div>
+
+          <!-- NET BANKING -->
+          <div class="payment-method" data-form="netBankForm">
+            <input type="radio" name="payment" value="netbank" />
+            <span class="payment-icon-img">🏦</span>
+            <div><div class="payment-method-name">Net Banking</div><div class="payment-method-desc">All major banks supported</div></div>
+          </div>
+          <div id="netBankForm" class="payment-detail-form" style="display:none;background:var(--gray-100);border-radius:12px;padding:20px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06)">
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label">Select Bank</label>
+              <select class="form-control sort-select">
+                <option>State Bank of India</option><option>HDFC Bank</option><option>ICICI Bank</option>
+                <option>Axis Bank</option><option>Kotak Mahindra</option><option>Yes Bank</option><option>Other Banks</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- COD -->
+          <div class="payment-method" data-form="codForm">
+            <input type="radio" name="payment" value="cod" />
+            <span class="payment-icon-img">💵</span>
+            <div><div class="payment-method-name">Cash on Delivery</div><div class="payment-method-desc">Pay when you receive your order (₹40 COD fee)</div></div>
+          </div>
+          <div id="codForm" class="payment-detail-form" style="display:none;background:var(--gray-100);border-radius:12px;padding:20px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06)">
+            <p style="font-size:0.88rem;color:var(--gray-600)">💡 Cash on Delivery is available for this order. A ₹40 COD handling fee applies. Please keep exact change ready.</p>
+          </div>
+
+          <!-- SECURITY BADGES -->
+          <div style="margin-top:24px">
+            <div style="font-size:0.78rem;color:var(--gray-500);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px">Secured by</div>
+            <div class="security-badges">
+              <div class="security-badge">🔒 256-bit SSL</div>
+              <div class="security-badge">✅ PCI Compliant</div>
+              <div class="security-badge">🛡️ 3D Secure</div>
+              <div class="security-badge">🏦 RBI Approved</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="order-summary">
+          <div class="summary-title">Order Total</div>
+          <div class="summary-row"><span class="label">Subtotal</span><span class="value">₹5,696</span></div>
+          <div class="summary-row"><span class="label">Delivery</span><span class="value">₹99</span></div>
+          <div class="summary-row"><span class="label">Tax (GST)</span><span class="value">₹284</span></div>
+          <div class="summary-row total"><span class="label">Total</span><span class="value">₹6,079</span></div>
+          <a href="order-success.html" class="btn btn-primary btn-lg" style="width:100%;margin-top:20px;justify-content:center" onclick="this.innerHTML='⏳ Processing...'">
+            Pay ₹6,079 →
+          </a>
+          <p style="text-align:center;font-size:0.75rem;color:var(--gray-500);margin-top:12px">🔒 Your payment is 100% secure</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="footer-container"></div>
+<div class="toast-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

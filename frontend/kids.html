@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kids Collection – ASKR Clothing</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .kids-hero-bg { background: linear-gradient(135deg, rgba(79,195,247,0.08) 0%, rgba(13,13,13,0) 60%); }
+    .kids-tab.active { background: linear-gradient(135deg, var(--sky-blue), #0288D1); color: var(--black); }
+    .fun-shape { position:absolute; border-radius:50%; background:rgba(79,195,247,0.05); pointer-events:none; }
+  </style>
+</head>
+<body>
+<div id="navbar-container" data-page="kids"></div>
+<div class="page-wrapper">
+
+  <div class="page-hero kids-hero-bg" style="position:relative;overflow:hidden">
+    <div class="fun-shape" style="width:200px;height:200px;top:-50px;right:10%;"></div>
+    <div class="fun-shape" style="width:100px;height:100px;bottom:20px;right:30%;"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-badge sky-badge">🧒 Kids Fashion</div>
+      <h1 class="page-hero-title">Kids <span class="sky-accent">Collection</span></h1>
+      <p class="page-hero-subtitle">Fun, vibrant, and comfortable — fashion your little ones will love!</p>
+    </div>
+  </div>
+
+  <div class="breadcrumb-section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="home.html">Home</a><span class="separator">›</span>
+        <span class="current sky-accent">Kids Collection</span>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding:32px 0 0;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06)">
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-btn kids-tab active">All Kids</button>
+        <button class="tab-btn kids-tab">Boys Wear</button>
+        <button class="tab-btn kids-tab">Girls Wear</button>
+        <button class="tab-btn kids-tab">Infant Wear</button>
+        <button class="tab-btn kids-tab">School Wear</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="collection-layout">
+        <aside>
+          <div class="filter-sidebar">
+            <div class="filter-title">Filters <span class="filter-clear">Clear All</span></div>
+            <div class="filter-group">
+              <div class="filter-group-title">Age Group</div>
+              <label class="filter-option"><input type="checkbox" checked /><label>All Ages</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>0–2 years (Infant)</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>3–7 years</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>8–12 years</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>13–16 years (Teen)</label></label>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Price Range</div>
+              <input type="range" min="100" max="2000" value="2000" />
+              <div class="price-range-labels"><span>₹100</span><span>₹2,000</span></div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Size</div>
+              <div class="size-options">
+                <div class="size-option">2Y</div><div class="size-option active">4Y</div>
+                <div class="size-option">6Y</div><div class="size-option">8Y</div>
+                <div class="size-option">10Y</div><div class="size-option">12Y</div>
+              </div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Color</div>
+              <div class="color-swatches">
+                <div class="color-swatch active" style="background:#4FC3F7" title="Sky Blue"></div>
+                <div class="color-swatch" style="background:#FFD54F" title="Yellow"></div>
+                <div class="color-swatch" style="background:#E91E63" title="Pink"></div>
+                <div class="color-swatch" style="background:#4CAF50" title="Green"></div>
+                <div class="color-swatch" style="background:#FF6B00" title="Orange"></div>
+                <div class="color-swatch" style="background:#9C27B0" title="Purple"></div>
+                <div class="color-swatch" style="background:#F44336" title="Red"></div>
+                <div class="color-swatch" style="background:#FFFFFF;border:1px solid #555" title="White"></div>
+              </div>
+            </div>
+            <button class="btn sky-btn" style="width:100%;margin-top:8px;border-radius:8px">Apply Filters</button>
+          </div>
+        </aside>
+
+        <div>
+          <div class="search-bar">
+            <i>🔍</i>
+            <input type="text" placeholder="Search kids products..." class="search-filter-input" />
+          </div>
+          <div class="collection-header">
+            <span class="collection-count">Showing <strong class="sky-accent">180</strong> products</span>
+            <select class="sort-select"><option>Sort: Relevance</option><option>Newest First</option><option>Price: Low to High</option><option>Price: High to Low</option></select>
+          </div>
+          <div class="grid-3">
+            <div class="product-card" data-name="boys graphic t-shirt fun colorful">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1519278409-1f56fdda7fe5?w=400&q=80" alt="Boys T-Shirt" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="k1" data-name="Boys Graphic Tee" data-price="399">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn sky-btn btn-sm btn-add-cart" data-id="k1" data-name="Boys Graphic Tee" data-price="399" style="width:100%;border-radius:6px">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category sky-accent">Boys Wear · 3–10Y</div>
+                <div class="product-name">Fun Graphic T-Shirt</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(89)</span></div>
+                <div class="product-price"><span class="price-current">₹399</span><span class="price-original">₹599</span><span class="price-discount">33% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="girls frock dress princess floral pink">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1476234251651-f353703a034d?w=400&q=80" alt="Girls Frock" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge badge-trending">Popular</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="k2" data-name="Princess Frock" data-price="699">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn sky-btn btn-sm btn-add-cart" data-id="k2" data-name="Princess Frock" data-price="699" style="width:100%;border-radius:6px">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category sky-accent">Girls Wear · 2–8Y</div>
+                <div class="product-name">Princess Floral Frock</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(132)</span></div>
+                <div class="product-price"><span class="price-current">₹699</span><span class="price-original">₹999</span><span class="price-discount">30% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="infant onesie romper baby comfortable">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?w=400&q=80" alt="Infant" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="k3" data-name="Baby Romper Set" data-price="499">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn sky-btn btn-sm btn-add-cart" data-id="k3" data-name="Baby Romper Set" data-price="499" style="width:100%;border-radius:6px">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category sky-accent">Infant · 0–2Y</div>
+                <div class="product-name">Soft Baby Romper Set</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(78)</span></div>
+                <div class="product-price"><span class="price-current">₹499</span><span class="price-original">₹799</span><span class="price-discount">38% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="kids denim jeans boys casual wear">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=400&q=80" alt="Kids Jeans" loading="lazy"/>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="k4" data-name="Kids Denim Jeans" data-price="799">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn sky-btn btn-sm btn-add-cart" data-id="k4" data-name="Kids Denim Jeans" data-price="799" style="width:100%;border-radius:6px">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category sky-accent">Boys Wear · 5–14Y</div>
+                <div class="product-name">Slim Fit Kids Jeans</div>
+                <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(54)</span></div>
+                <div class="product-price"><span class="price-current">₹799</span><span class="price-original">₹1,199</span><span class="price-discount">33% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="girls leggings comfortable stretchy cute">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80" alt="Girls" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="k5" data-name="Girls Leggings Set" data-price="349">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn sky-btn btn-sm btn-add-cart" data-id="k5" data-name="Girls Leggings Set" data-price="349" style="width:100%;border-radius:6px">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category sky-accent">Girls Wear · 3–12Y</div>
+                <div class="product-name">Cute Printed Leggings</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(98)</span></div>
+                <div class="product-price"><span class="price-current">₹349</span><span class="price-original">₹549</span><span class="price-discount">36% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="kids sweatshirt cozy warm winter pullover">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=400&q=80" alt="Sweatshirt" loading="lazy"/>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="k6" data-name="Kids Sweatshirt" data-price="899">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn sky-btn btn-sm btn-add-cart" data-id="k6" data-name="Kids Sweatshirt" data-price="899" style="width:100%;border-radius:6px">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category sky-accent">Unisex · 5–14Y</div>
+                <div class="product-name">Cozy Winter Sweatshirt</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(67)</span></div>
+                <div class="product-price"><span class="price-current">₹899</span><span class="price-original">₹1,399</span><span class="price-discount">36% off</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:40px">
+            <button class="btn sky-btn btn-lg" style="border-radius:8px" onclick="showToast('Loading more products...','info')">Load More ›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="footer-container"></div>
+<div class="toast-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

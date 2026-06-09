@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ – ASKR Clothing</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="navbar-container" data-page=""></div>
+<div class="page-wrapper">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">Frequently Asked <span>Questions</span></h1>
+      <p class="page-hero-subtitle">Find quick answers to your most common questions</p>
+      <div class="search-bar" style="max-width:500px;margin-top:28px">
+        <i>🔍</i>
+        <input type="text" placeholder="Search questions..." id="faqSearch" />
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container-sm">
+      <!-- TABS -->
+      <div class="tabs" style="margin-bottom:40px">
+        <button class="tab-btn active" onclick="filterFAQ('all',this)">All</button>
+        <button class="tab-btn" onclick="filterFAQ('orders',this)">Orders & Delivery</button>
+        <button class="tab-btn" onclick="filterFAQ('returns',this)">Returns & Refunds</button>
+        <button class="tab-btn" onclick="filterFAQ('products',this)">Products & Sizing</button>
+        <button class="tab-btn" onclick="filterFAQ('payments',this)">Payments</button>
+        <button class="tab-btn" onclick="filterFAQ('account',this)">Account</button>
+      </div>
+
+      <div id="faqList">
+        <!-- ORDERS -->
+        <div class="faq-item" data-category="orders">
+          <div class="faq-question">
+            <h4>How long does delivery take?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Standard delivery takes 3–5 business days. Express delivery is available and takes 1–2 business days. Same-day delivery is available in select cities for orders placed before 12PM.</p></div>
+        </div>
+        <div class="faq-item" data-category="orders">
+          <div class="faq-question">
+            <h4>How can I track my order?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Once your order is shipped, you'll receive an SMS and email with the tracking link. You can also track your order from your <a href="profile.html" style="color:var(--orange)">profile page</a> or visit our <a href="tracking.html" style="color:var(--orange)">order tracking page</a> with your Order ID.</p></div>
+        </div>
+        <div class="faq-item" data-category="orders">
+          <div class="faq-question">
+            <h4>Do you deliver across India?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Yes! We deliver pan-India to over 27,000 PIN codes. Free delivery is available on all orders above ₹999. For remote areas, delivery may take 5–7 business days.</p></div>
+        </div>
+        <div class="faq-item" data-category="orders">
+          <div class="faq-question">
+            <h4>Can I modify or cancel my order?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>You can cancel or modify your order within 2 hours of placing it by contacting our support team. Once the order is packed, modifications may not be possible. Cancellations after dispatch are subject to our return policy.</p></div>
+        </div>
+
+        <!-- RETURNS -->
+        <div class="faq-item" data-category="returns">
+          <div class="faq-question">
+            <h4>What is your return policy?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>We offer a hassle-free 30-day return policy. Items must be unused, unwashed, and in original packaging with tags intact. Sale items are eligible for exchange only.</p></div>
+        </div>
+        <div class="faq-item" data-category="returns">
+          <div class="faq-question">
+            <h4>How do I initiate a return or exchange?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Go to your <a href="profile.html" style="color:var(--orange)">Order History</a>, select the order, and click "Return/Exchange". Our team will arrange a pickup within 2 business days. Refunds are processed within 5–7 days after the item is received.</p></div>
+        </div>
+        <div class="faq-item" data-category="returns">
+          <div class="faq-question">
+            <h4>When will I receive my refund?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Refunds are processed within 5–7 business days after we receive the returned item. For UPI and cards, the amount reflects in 3–5 days. Bank transfers may take up to 7 days.</p></div>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div class="faq-item" data-category="products">
+          <div class="faq-question">
+            <h4>How do I find the right size?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Each product page has a detailed size guide with measurements. We recommend measuring your chest, waist, and hips and comparing with our size chart. If you're between sizes, we suggest going one size up for comfort.</p></div>
+        </div>
+        <div class="faq-item" data-category="products">
+          <div class="faq-question">
+            <h4>What fabric/material is used?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>ASKR uses only premium materials — 100% cotton, premium linens, stretch denim, and high-quality blends. All fabric details are mentioned on individual product pages under "Product Details".</p></div>
+        </div>
+        <div class="faq-item" data-category="products">
+          <div class="faq-question">
+            <h4>Are the product colors accurate in photos?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>We take great care to accurately represent product colors. However, slight color variations may occur due to screen calibration differences. If you're unsatisfied with the color, our return policy applies.</p></div>
+        </div>
+
+        <!-- PAYMENTS -->
+        <div class="faq-item" data-category="payments">
+          <div class="faq-question">
+            <h4>What payment methods are accepted?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>We accept UPI (PhonePe, Google Pay, Paytm, BHIM), Credit Cards, Debit Cards (Visa, Mastercard, Rupay, Amex), Net Banking, and Cash on Delivery (₹40 COD fee applies).</p></div>
+        </div>
+        <div class="faq-item" data-category="payments">
+          <div class="faq-question">
+            <h4>Is it safe to pay on ASKR?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Absolutely! All transactions on ASKR are secured with 256-bit SSL encryption. We are PCI DSS compliant and use 3D Secure authentication for card payments. Your financial data is never stored on our servers.</p></div>
+        </div>
+
+        <!-- ACCOUNT -->
+        <div class="faq-item" data-category="account">
+          <div class="faq-question">
+            <h4>How do I create an account?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Click "Sign Up" on the login page and fill in your name, email, mobile number, and password. You can also sign up instantly with Google or Facebook. Creating an account lets you track orders, manage wishlists, and access exclusive offers.</p></div>
+        </div>
+        <div class="faq-item" data-category="account">
+          <div class="faq-question">
+            <h4>I forgot my password. What should I do?</h4>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer"><p>Click "Forgot Password" on the <a href="login.html" style="color:var(--orange)">login page</a>. Enter your registered email and you'll receive a password reset link within 2 minutes. Check your spam folder if you don't see it in your inbox.</p></div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:56px;padding:40px;background:var(--charcoal);border-radius:20px;border:1px solid rgba(255,255,255,0.07)">
+        <div style="font-size:2rem;margin-bottom:12px">🤔</div>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory);margin-bottom:8px">Still have questions?</h3>
+        <p style="font-size:0.88rem;color:var(--gray-600);margin-bottom:24px">Our support team is available 24/7 to help you</p>
+        <a href="contact.html" class="btn btn-primary btn-lg">Contact Support 🎧</a>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="footer-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+<script>
+  function filterFAQ(cat, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.style.display = (cat === 'all' || item.dataset.category === cat) ? '' : 'none';
+    });
+  }
+  document.getElementById('faqSearch').addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const text = item.querySelector('h4').textContent.toLowerCase();
+      item.style.display = text.includes(q) ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Women's Collection – ASKR Clothing</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .women-hero { background: linear-gradient(135deg, rgba(196,168,130,0.08) 0%, rgba(13,13,13,0) 60%); }
+    .rose-tab.active { background: linear-gradient(135deg, var(--rose-gold), #8B6914); color: var(--black); }
+    .rose-tab:hover:not(.active) { color: var(--rose-gold); }
+  </style>
+</head>
+<body>
+<div id="navbar-container" data-page="women"></div>
+<div class="page-wrapper">
+
+  <div class="page-hero women-hero">
+    <div class="container">
+      <div class="section-badge rose-badge" style="color:var(--rose-gold);border-color:rgba(196,168,130,0.3);background:rgba(196,168,130,0.08)">👗 Women's Fashion</div>
+      <h1 class="page-hero-title">Women's <span style="color:var(--rose-gold)">Collection</span></h1>
+      <p class="page-hero-subtitle">Elegant, graceful, and timeless — fashion crafted for the modern woman</p>
+    </div>
+  </div>
+
+  <div class="breadcrumb-section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="home.html">Home</a><span class="separator">›</span>
+        <span class="current" style="color:var(--rose-gold)">Women's Collection</span>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding:32px 0 0;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06)">
+    <div class="container">
+      <div class="tabs" id="womenTabs">
+        <button class="tab-btn rose-tab active" data-tab="wall">All</button>
+        <button class="tab-btn rose-tab" data-tab="wsarees">Sarees</button>
+        <button class="tab-btn rose-tab" data-tab="wkurtis">Kurtis</button>
+        <button class="tab-btn rose-tab" data-tab="wdresses">Dresses</button>
+        <button class="tab-btn rose-tab" data-tab="wtops">Tops</button>
+        <button class="tab-btn rose-tab" data-tab="wjeans">Jeans</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="collection-layout">
+        <aside>
+          <div class="filter-sidebar">
+            <div class="filter-title">Filters <span class="filter-clear">Clear All</span></div>
+            <div class="filter-group">
+              <div class="filter-group-title">Category</div>
+              <label class="filter-option"><input type="checkbox" checked /><label>All Women's</label><span class="count">320</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Sarees</label><span class="count">78</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Kurtis</label><span class="count">92</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Dresses</label><span class="count">65</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Tops</label><span class="count">55</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Jeans</label><span class="count">30</span></label>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Price Range</div>
+              <input type="range" min="200" max="8000" value="8000" />
+              <div class="price-range-labels"><span>₹200</span><span>₹8,000</span></div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Size</div>
+              <div class="size-options">
+                <div class="size-option">XS</div><div class="size-option active">S</div>
+                <div class="size-option">M</div><div class="size-option">L</div>
+                <div class="size-option">XL</div><div class="size-option">XXL</div>
+              </div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Color</div>
+              <div class="color-swatches">
+                <div class="color-swatch" style="background:#E91E63" title="Pink"></div>
+                <div class="color-swatch active" style="background:#C4A882" title="Rose Gold"></div>
+                <div class="color-swatch" style="background:#9C27B0" title="Purple"></div>
+                <div class="color-swatch" style="background:#F44336" title="Red"></div>
+                <div class="color-swatch" style="background:#2196F3" title="Blue"></div>
+                <div class="color-swatch" style="background:#FFFFFF;border:1px solid #555" title="White"></div>
+                <div class="color-swatch" style="background:#0D0D0D;border:1px solid #555" title="Black"></div>
+                <div class="color-swatch" style="background:#4CAF50" title="Green"></div>
+              </div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Occasion</div>
+              <label class="filter-option"><input type="checkbox" /><label>Casual</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>Ethnic</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>Party</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>Formal</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>Wedding</label></label>
+            </div>
+            <button class="btn btn-primary" style="width:100%;margin-top:8px;background:linear-gradient(135deg,var(--rose-gold),#8B6914);color:var(--black)">Apply Filters</button>
+          </div>
+        </aside>
+
+        <div>
+          <div class="search-bar">
+            <i>🔍</i>
+            <input type="text" placeholder="Search women's products..." class="search-filter-input" />
+          </div>
+          <div class="collection-header">
+            <span class="collection-count">Showing <strong style="color:var(--rose-gold)">320</strong> products</span>
+            <select class="sort-select">
+              <option>Sort: Relevance</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest First</option>
+              <option>Top Rated</option>
+            </select>
+          </div>
+
+          <div class="grid-3">
+            <div class="product-card" data-name="premium silk saree traditional elegant">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80" alt="Saree" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge" style="background:var(--rose-gold);color:#000">Premium</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w1" data-name="Premium Silk Saree" data-price="2999">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w1" data-name="Premium Silk Saree" data-price="2999">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Sarees</div>
+                <div class="product-name">Premium Banarasi Silk Saree</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(234)</span></div>
+                <div class="product-price"><span class="price-current">₹2,999</span><span class="price-original">₹4,999</span><span class="price-discount">40% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="embroidered kurti cotton ethnic">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80" alt="Kurti" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w2" data-name="Embroidered Kurti" data-price="999">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w2" data-name="Embroidered Kurti" data-price="999">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Kurtis</div>
+                <div class="product-name">Embroidered Cotton Kurti</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(187)</span></div>
+                <div class="product-price"><span class="price-current">₹999</span><span class="price-original">₹1,599</span><span class="price-discount">38% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="maxi dress elegant party long floral">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=400&q=80" alt="Dress" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w3" data-name="Floral Maxi Dress" data-price="1799">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w3" data-name="Floral Maxi Dress" data-price="1799">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Dresses</div>
+                <div class="product-name">Floral Maxi Dress</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(312)</span></div>
+                <div class="product-price"><span class="price-current">₹1,799</span><span class="price-original">₹2,799</span><span class="price-discount">36% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="crop top casual trendy women summer">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&q=80" alt="Top" loading="lazy"/>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w4" data-name="Casual Crop Top" data-price="599">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w4" data-name="Casual Crop Top" data-price="599">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Tops</div>
+                <div class="product-name">Casual Crop Top</div>
+                <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(423)</span></div>
+                <div class="product-price"><span class="price-current">₹599</span><span class="price-original">₹899</span><span class="price-discount">33% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="women high waist skinny jeans denim">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1566206091558-7f218b696731?w=400&q=80" alt="Jeans" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w5" data-name="High Waist Skinny Jeans" data-price="1299">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w5" data-name="High Waist Skinny Jeans" data-price="1299">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Jeans</div>
+                <div class="product-name">High Waist Skinny Jeans</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(278)</span></div>
+                <div class="product-price"><span class="price-current">₹1,299</span><span class="price-original">₹1,999</span><span class="price-discount">35% off</span></div>
+              </div>
+            </div>
+            <div class="product-card" data-name="anarkali suit ethnic traditional party">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80" alt="Suit" loading="lazy"/>
+                <div class="product-badges"><span class="product-badge" style="background:var(--rose-gold);color:#000">Premium</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w6" data-name="Anarkali Ethnic Suit" data-price="2199">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w6" data-name="Anarkali Ethnic Suit" data-price="2199">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Kurtis</div>
+                <div class="product-name">Anarkali Ethnic Suit Set</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(156)</span></div>
+                <div class="product-price"><span class="price-current">₹2,199</span><span class="price-original">₹3,499</span><span class="price-discount">37% off</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:40px">
+            <button class="btn btn-lg" style="background:linear-gradient(135deg,var(--rose-gold),#8B6914);color:#000" onclick="showToast('Loading more products...','info')">Load More ›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="footer-container"></div>
+<div class="toast-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

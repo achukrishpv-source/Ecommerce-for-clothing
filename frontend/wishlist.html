@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist – ASKR Clothing</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="navbar-container" data-page=""></div>
+<div class="page-wrapper">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">My <span>Wishlist</span></h1>
+      <p class="page-hero-subtitle">Products you love, saved for later</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div id="wishlistContent">
+        <div class="grid-4" id="wishlistGrid">
+          <!-- JS-populated -->
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80" alt="Hoodie" loading="lazy"/>
+              <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+              <div class="product-actions" style="transform:translateX(0)">
+                <button class="product-action-btn active" title="Remove from Wishlist" onclick="removeFromWishlist(this,'Urban Black Hoodie')">❤️</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Men · Hoodies</div>
+              <div class="product-name">Urban Black Hoodie</div>
+              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(128)</span></div>
+              <div class="product-price"><span class="price-current">₹1,299</span><span class="price-original">₹1,999</span></div>
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <button class="btn btn-primary btn-sm" style="flex:1" onclick="moveToCart('Urban Black Hoodie',1299)">Move to Cart</button>
+                <a href="product.html" class="btn btn-secondary btn-sm">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=400&q=80" alt="Dress" loading="lazy"/>
+              <div class="product-actions" style="transform:translateX(0)">
+                <button class="product-action-btn active" title="Remove" onclick="removeFromWishlist(this,'Flowy Summer Dress')">❤️</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Women · Dresses</div>
+              <div class="product-name">Flowy Summer Dress</div>
+              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(176)</span></div>
+              <div class="product-price"><span class="price-current">₹1,199</span><span class="price-original">₹1,899</span></div>
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <button class="btn btn-primary btn-sm" style="flex:1" onclick="moveToCart('Flowy Summer Dress',1199)">Move to Cart</button>
+                <a href="product.html" class="btn btn-secondary btn-sm">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80" alt="Jeans" loading="lazy"/>
+              <div class="product-actions" style="transform:translateX(0)">
+                <button class="product-action-btn active" title="Remove" onclick="removeFromWishlist(this,'Slim Fit Jeans')">❤️</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Men · Jeans</div>
+              <div class="product-name">Slim Fit Premium Denim</div>
+              <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(214)</span></div>
+              <div class="product-price"><span class="price-current">₹1,599</span><span class="price-original">₹2,499</span></div>
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <button class="btn btn-primary btn-sm" style="flex:1" onclick="moveToCart('Slim Fit Jeans',1599)">Move to Cart</button>
+                <a href="product.html" class="btn btn-secondary btn-sm">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80" alt="Kurti" loading="lazy"/>
+              <div class="product-actions" style="transform:translateX(0)">
+                <button class="product-action-btn active" title="Remove" onclick="removeFromWishlist(this,'Floral Kurti')">❤️</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Women · Kurtis</div>
+              <div class="product-name">Floral Print Kurti</div>
+              <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(95)</span></div>
+              <div class="product-price"><span class="price-current">₹849</span><span class="price-original">₹1,299</span></div>
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <button class="btn btn-primary btn-sm" style="flex:1" onclick="moveToCart('Floral Kurti',849)">Move to Cart</button>
+                <a href="product.html" class="btn btn-secondary btn-sm">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:40px">
+          <a href="home.html" class="btn btn-outline-orange btn-lg">← Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="footer-container"></div>
+<div class="toast-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+<script>
+  function removeFromWishlist(btn, name) {
+    const card = btn.closest('.product-card');
+    card.style.transform = 'scale(0.8)';
+    card.style.opacity = '0';
+    card.style.transition = 'all 0.3s ease';
+    setTimeout(() => card.remove(), 300);
+    showToast(`${name} removed from wishlist`, 'info');
+  }
+  function moveToCart(name, price) {
+    ASKR.addToCart({ id: 'w-' + Date.now(), name, price });
+    showToast(`${name} moved to cart!`, 'success');
+  }
+</script>
+</body>
+</html>

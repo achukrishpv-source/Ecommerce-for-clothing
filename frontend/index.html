@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASKR Clothing – Elevate Your Style</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { margin: 0; overflow: hidden; }
+    .splash {
+      position: fixed; inset: 0; background: var(--black);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+    .splash-rings {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;
+    }
+    .ring {
+      position: absolute; border-radius: 50%; border: 1px solid rgba(255,107,0,0.15);
+      animation: expand 3s ease-out infinite;
+    }
+    .ring:nth-child(1) { width: 200px; height: 200px; animation-delay: 0s; }
+    .ring:nth-child(2) { width: 350px; height: 350px; animation-delay: 0.5s; }
+    .ring:nth-child(3) { width: 500px; height: 500px; animation-delay: 1s; }
+    .ring:nth-child(4) { width: 700px; height: 700px; animation-delay: 1.5s; border-color: rgba(255,107,0,0.06); }
+    @keyframes expand {
+      0% { opacity: 0.8; transform: scale(0.8); }
+      100% { opacity: 0; transform: scale(1.2); }
+    }
+    .splash-glow {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,0,0.18) 0%, transparent 70%);
+      animation: pulse-glow-big 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-glow-big {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+    .splash-content { position: relative; z-index: 1; text-align: center; }
+    .splash-logo-wrap {
+      position: relative; width: 160px; height: 160px; margin: 0 auto 32px;
+      animation: scaleIn 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
+    .splash-logo-bg {
+      position: absolute; inset: 0; border-radius: 36px;
+      background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(212,160,23,0.1));
+      border: 1px solid rgba(255,107,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+    .splash-logo-img {
+      position: relative; z-index: 1; width: 100px; height: 100px;
+      margin: 30px auto 0; display: block;
+      filter: drop-shadow(0 0 20px rgba(255,107,0,0.7));
+      animation: float 3s ease-in-out infinite 0.8s;
+    }
+    .splash-brand {
+      font-family: 'Montserrat', sans-serif; font-size: 4rem; font-weight: 900;
+      color: var(--white); letter-spacing: 10px; text-transform: uppercase;
+      animation: fadeInUp 0.7s ease 0.4s both;
+      text-shadow: 0 0 40px rgba(255,107,0,0.4);
+    }
+    .splash-brand span { color: var(--orange); }
+    .splash-tagline {
+      font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 400;
+      color: var(--gray-600); letter-spacing: 6px; text-transform: uppercase;
+      margin-top: 10px; animation: fadeInUp 0.7s ease 0.6s both;
+    }
+    .splash-tagline em { color: var(--gold); font-style: normal; }
+    .splash-loader { margin-top: 50px; animation: fadeInUp 0.7s ease 0.9s both; }
+    .loader-bar {
+      width: 220px; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden;
+    }
+    .loader-fill {
+      height: 100%; background: linear-gradient(90deg, var(--orange), var(--gold));
+      border-radius: 2px; width: 0%;
+      animation: loadFill 2.8s cubic-bezier(0.4,0,0.2,1) 0.5s forwards;
+    }
+    @keyframes loadFill { 0% { width: 0%; } 80% { width: 95%; } 100% { width: 100%; } }
+    .loader-text {
+      font-size: 0.72rem; color: var(--gray-500); letter-spacing: 2px; text-transform: uppercase;
+      margin-top: 10px; text-align: center;
+    }
+    .splash-dots { display: flex; gap: 6px; justify-content: center; margin-top: 16px; }
+    .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--orange);
+      animation: dot-pulse 1.2s ease-in-out infinite;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; background: var(--gold); }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dot-pulse { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
+    .splash.hidden { animation: splashHide 0.8s ease forwards; }
+    @keyframes splashHide { to { opacity: 0; transform: scale(1.05); pointer-events: none; } }
+    .splash-particles {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .particle {
+      position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--orange);
+      animation: particle-float linear infinite;
+      opacity: 0;
+    }
+    @keyframes particle-float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+    .splash-subtitle {
+      font-size: 0.8rem; color: var(--gray-600); letter-spacing: 2px;
+      margin-top: 6px; animation: fadeInUp 0.7s ease 0.8s both;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="splash" id="splash">
+  <div class="splash-particles" id="particles"></div>
+  <div class="splash-glow"></div>
+  <div class="splash-rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+  <div class="splash-content">
+    <div class="splash-logo-wrap">
+      <div class="splash-logo-bg"></div>
+      <img class="splash-logo-img" src="askr-logo.png" alt="ASKR Logo" onerror="this.style.display='none';document.getElementById('logo-text-fallback').style.display='flex'" />
+      <div id="logo-text-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-size:2.6rem;font-weight:900;color:#FF6B00;letter-spacing:2px;">A</div>
+    </div>
+    <div class="splash-brand">ASK<span>R</span></div>
+    <div class="splash-tagline"><em>Elevate Your Style</em></div>
+    <div class="splash-subtitle">Premium Fashion · Streetwear · Luxury</div>
+    <div class="splash-loader">
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <div class="loader-text">Loading Collection...</div>
+      <div class="splash-dots">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Create floating particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (Math.random() * 8 + 6) + 's';
+    p.style.animationDelay = (Math.random() * 6) + 's';
+    p.style.width = p.style.height = (Math.random() * 4 + 2) + 'px';
+    p.style.background = Math.random() > 0.5 ? '#FF6B00' : '#D4A017';
+    p.style.opacity = '0';
+    container.appendChild(p);
+  }
+
+  // Redirect after animation
+  setTimeout(() => {
+    document.getElementById('splash').classList.add('hidden');
+    setTimeout(() => { window.location.href = 'home.html'; }, 800);
+  }, 3800);
+</script>
+</body>
+</html>

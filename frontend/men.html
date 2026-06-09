@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Men's Collection – ASKR Clothing</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="navbar-container" data-page="men"></div>
+<div class="page-wrapper">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-badge">👔 Men's Fashion</div>
+      <h1 class="page-hero-title">Men's <span>Collection</span></h1>
+      <p class="page-hero-subtitle">Bold, confident, premium — discover styles built for modern men</p>
+    </div>
+  </div>
+
+  <div class="breadcrumb-section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="home.html">Home</a><span class="separator">›</span>
+        <span class="current">Men's Collection</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY TABS -->
+  <section style="padding:32px 0 0;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06)">
+    <div class="container">
+      <div class="tabs" id="menTabs">
+        <button class="tab-btn active" data-tab="all">All</button>
+        <button class="tab-btn" data-tab="shirts">Shirts</button>
+        <button class="tab-btn" data-tab="tshirts">T-Shirts</button>
+        <button class="tab-btn" data-tab="jeans">Jeans</button>
+        <button class="tab-btn" data-tab="hoodies">Hoodies</button>
+        <button class="tab-btn" data-tab="jackets">Jackets</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="collection-layout">
+
+        <!-- SIDEBAR -->
+        <aside>
+          <div class="filter-sidebar">
+            <div class="filter-title">Filters <span class="filter-clear">Clear All</span></div>
+            <div class="filter-group">
+              <div class="filter-group-title">Category</div>
+              <label class="filter-option"><input type="checkbox" checked /><label>All Men's</label><span class="count">280</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Shirts</label><span class="count">72</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>T-Shirts</label><span class="count">85</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Jeans</label><span class="count">54</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Hoodies</label><span class="count">38</span></label>
+              <label class="filter-option"><input type="checkbox" /><label>Jackets</label><span class="count">31</span></label>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Price Range</div>
+              <input type="range" min="200" max="5000" value="5000" />
+              <div class="price-range-labels"><span>₹200</span><span>₹5,000</span></div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Size</div>
+              <div class="size-options">
+                <div class="size-option">XS</div>
+                <div class="size-option active">S</div>
+                <div class="size-option">M</div>
+                <div class="size-option">L</div>
+                <div class="size-option">XL</div>
+                <div class="size-option">XXL</div>
+              </div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Color</div>
+              <div class="color-swatches">
+                <div class="color-swatch active" style="background:#0D0D0D;border:1px solid #555" title="Black"></div>
+                <div class="color-swatch" style="background:#FFFFFF;border:1px solid #555" title="White"></div>
+                <div class="color-swatch" style="background:#FF6B00" title="Orange"></div>
+                <div class="color-swatch" style="background:#1565C0" title="Blue"></div>
+                <div class="color-swatch" style="background:#2E7D32" title="Green"></div>
+                <div class="color-swatch" style="background:#880E4F" title="Maroon"></div>
+                <div class="color-swatch" style="background:#D4A017" title="Gold"></div>
+                <div class="color-swatch" style="background:#607D8B" title="Grey"></div>
+              </div>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Rating</div>
+              <label class="filter-option"><input type="checkbox" /><label>⭐⭐⭐⭐⭐ 5 Stars</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>⭐⭐⭐⭐ 4+ Stars</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>⭐⭐⭐ 3+ Stars</label></label>
+            </div>
+            <div class="filter-group">
+              <div class="filter-group-title">Discount</div>
+              <label class="filter-option"><input type="checkbox" /><label>10% or more</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>20% or more</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>30% or more</label></label>
+              <label class="filter-option"><input type="checkbox" /><label>50% or more</label></label>
+            </div>
+            <button class="btn btn-primary" style="width:100%;margin-top:8px">Apply Filters</button>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div>
+          <div class="search-bar">
+            <i>🔍</i>
+            <input type="text" placeholder="Search men's products..." class="search-filter-input" />
+          </div>
+          <div class="collection-header">
+            <span class="collection-count">Showing <strong style="color:var(--orange)">280</strong> products</span>
+            <select class="sort-select">
+              <option>Sort: Relevance</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest First</option>
+              <option>Top Rated</option>
+              <option>Most Popular</option>
+            </select>
+          </div>
+
+          <div class="tabs-wrapper">
+            <div class="tab-content active" id="all">
+              <div class="grid-3">
+                <div class="product-card" data-name="premium oxford shirt men formal">
+                  <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400&q=80" alt="Shirt" loading="lazy"/>
+                    <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                    <div class="product-actions">
+                      <button class="product-action-btn" data-wishlist="m1" data-name="Oxford Formal Shirt" data-price="1199">🤍</button>
+                      <a href="product.html" class="product-action-btn">👁</a>
+                    </div>
+                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m1" data-name="Oxford Formal Shirt" data-price="1199">Add to Cart</button></div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">Shirts</div>
+                    <div class="product-name">Oxford Formal Shirt</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(147)</span></div>
+                    <div class="product-price"><span class="price-current">₹1,199</span><span class="price-original">₹1,799</span><span class="price-discount">33% off</span></div>
+                  </div>
+                </div>
+                <div class="product-card" data-name="premium graphic tee oversized streetwear">
+                  <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80" alt="T-Shirt" loading="lazy"/>
+                    <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+                    <div class="product-actions">
+                      <button class="product-action-btn" data-wishlist="m2" data-name="Graphic Oversize Tee" data-price="799">🤍</button>
+                      <a href="product.html" class="product-action-btn">👁</a>
+                    </div>
+                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m2" data-name="Graphic Oversize Tee" data-price="799">Add to Cart</button></div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">T-Shirts</div>
+                    <div class="product-name">Graphic Oversize Tee</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(302)</span></div>
+                    <div class="product-price"><span class="price-current">₹799</span><span class="price-original">₹1,199</span><span class="price-discount">33% off</span></div>
+                  </div>
+                </div>
+                <div class="product-card" data-name="slim fit denim jeans stretch dark wash">
+                  <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80" alt="Jeans" loading="lazy"/>
+                    <div class="product-actions">
+                      <button class="product-action-btn" data-wishlist="m3" data-name="Slim Fit Jeans" data-price="1599">🤍</button>
+                      <a href="product.html" class="product-action-btn">👁</a>
+                    </div>
+                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m3" data-name="Slim Fit Jeans" data-price="1599">Add to Cart</button></div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">Jeans</div>
+                    <div class="product-name">Slim Fit Dark Wash Jeans</div>
+                    <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(189)</span></div>
+                    <div class="product-price"><span class="price-current">₹1,599</span><span class="price-original">₹2,499</span><span class="price-discount">36% off</span></div>
+                  </div>
+                </div>
+                <div class="product-card" data-name="pullover hoodie warm premium fleece">
+                  <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80" alt="Hoodie" loading="lazy"/>
+                    <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                    <div class="product-actions">
+                      <button class="product-action-btn" data-wishlist="m4" data-name="Fleece Pullover Hoodie" data-price="1499">🤍</button>
+                      <a href="product.html" class="product-action-btn">👁</a>
+                    </div>
+                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m4" data-name="Fleece Pullover Hoodie" data-price="1499">Add to Cart</button></div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">Hoodies</div>
+                    <div class="product-name">Fleece Pullover Hoodie</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(267)</span></div>
+                    <div class="product-price"><span class="price-current">₹1,499</span><span class="price-original">₹2,199</span><span class="price-discount">32% off</span></div>
+                  </div>
+                </div>
+                <div class="product-card" data-name="leather bomber jacket premium winter">
+                  <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80" alt="Jacket" loading="lazy"/>
+                    <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+                    <div class="product-actions">
+                      <button class="product-action-btn" data-wishlist="m5" data-name="Leather Bomber Jacket" data-price="3999">🤍</button>
+                      <a href="product.html" class="product-action-btn">👁</a>
+                    </div>
+                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m5" data-name="Leather Bomber Jacket" data-price="3999">Add to Cart</button></div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">Jackets</div>
+                    <div class="product-name">Leather Bomber Jacket</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(143)</span></div>
+                    <div class="product-price"><span class="price-current">₹3,999</span><span class="price-original">₹6,499</span><span class="price-discount">38% off</span></div>
+                  </div>
+                </div>
+                <div class="product-card" data-name="linen casual shirt summer lightweight">
+                  <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=400&q=80" alt="Shirt" loading="lazy"/>
+                    <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
+                    <div class="product-actions">
+                      <button class="product-action-btn" data-wishlist="m6" data-name="Linen Casual Shirt" data-price="899">🤍</button>
+                      <a href="product.html" class="product-action-btn">👁</a>
+                    </div>
+                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m6" data-name="Linen Casual Shirt" data-price="899">Add to Cart</button></div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">Shirts</div>
+                    <div class="product-name">Linen Casual Shirt</div>
+                    <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(98)</span></div>
+                    <div class="product-price"><span class="price-current">₹899</span><span class="price-original">₹1,399</span><span class="price-discount">36% off</span></div>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align:center;margin-top:40px">
+                <button class="btn btn-outline-orange btn-lg" onclick="showToast('Loading more products...','info')">Load More Products</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="footer-container"></div>
+<div class="toast-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

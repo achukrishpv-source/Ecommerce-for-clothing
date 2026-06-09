@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout – ASKR Clothing</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="navbar-container" data-page=""></div>
+<div class="page-wrapper">
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">Checkout</h1>
+      <p class="page-hero-subtitle">You're almost there!</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container-sm">
+      <!-- PROGRESS BAR -->
+      <div class="progress-steps" style="margin-bottom:48px">
+        <div class="step completed"><div class="step-circle">🛒</div><div class="step-label">Cart</div></div>
+        <div class="step active"><div class="step-circle">📍</div><div class="step-label">Address</div></div>
+        <div class="step"><div class="step-circle">🚚</div><div class="step-label">Delivery</div></div>
+        <div class="step"><div class="step-circle">💳</div><div class="step-label">Payment</div></div>
+        <div class="step"><div class="step-circle">✅</div><div class="step-label">Confirm</div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start">
+        <div>
+          <!-- SAVED ADDRESSES -->
+          <div style="margin-bottom:32px">
+            <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory);margin-bottom:20px">Delivery Address</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+              <div class="address-card selected">
+                <span class="address-badge">Default</span>
+                <div class="address-type">🏠 Home</div>
+                <div class="address-name">Ashwath Krishna</div>
+                <div class="address-text">123, MG Road, Bengaluru, Karnataka – 560001<br>📱 +91 98765 43210</div>
+                <div class="address-actions">
+                  <span class="address-action-btn">✏️ Edit</span>
+                  <span class="address-action-btn" style="color:var(--gray-600)">🗑️ Delete</span>
+                </div>
+              </div>
+              <div class="address-card">
+                <div class="address-type">🏢 Work</div>
+                <div class="address-name">Ashwath Krishna</div>
+                <div class="address-text">Tech Park, Whitefield, Bengaluru, Karnataka – 560066<br>📱 +91 98765 43210</div>
+                <div class="address-actions">
+                  <span class="address-action-btn">✏️ Edit</span>
+                  <span class="address-action-btn" style="color:var(--gray-600)">🗑️ Delete</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline-orange btn-sm" onclick="document.getElementById('newAddressForm').style.display='block'">+ Add New Address</button>
+          </div>
+
+          <!-- NEW ADDRESS FORM -->
+          <div id="newAddressForm" style="display:none;background:var(--charcoal);border-radius:16px;padding:24px;border:1px solid rgba(255,255,255,0.07);margin-bottom:32px">
+            <h4 style="font-size:1rem;font-weight:700;color:var(--ivory);margin-bottom:20px">New Address</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-control" placeholder="Full Name" /></div>
+              <div class="form-group"><label class="form-label">Mobile</label><input type="tel" class="form-control" placeholder="+91 XXXXX XXXXX" /></div>
+              <div class="form-group" style="grid-column:span 2"><label class="form-label">Address Line 1</label><input type="text" class="form-control" placeholder="House No., Street, Area" /></div>
+              <div class="form-group"><label class="form-label">City</label><input type="text" class="form-control" placeholder="City" /></div>
+              <div class="form-group"><label class="form-label">State</label><select class="form-control sort-select"><option>Select State</option><option>Karnataka</option><option>Maharashtra</option><option>Tamil Nadu</option><option>Delhi</option><option>Gujarat</option></select></div>
+              <div class="form-group"><label class="form-label">PIN Code</label><input type="text" class="form-control" placeholder="PIN Code" /></div>
+              <div class="form-group"><label class="form-label">Address Type</label><select class="form-control sort-select"><option>Home</option><option>Work</option><option>Other</option></select></div>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:8px">
+              <button class="btn btn-primary" onclick="showToast('Address saved!','success');document.getElementById('newAddressForm').style.display='none'">Save Address</button>
+              <button class="btn btn-secondary" onclick="document.getElementById('newAddressForm').style.display='none'">Cancel</button>
+            </div>
+          </div>
+
+          <!-- DELIVERY OPTIONS -->
+          <div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory);margin-bottom:20px">Delivery Method</h3>
+            <div class="delivery-option selected" style="display:flex;gap:16px;padding:16px 20px;background:var(--gray-100);border-radius:12px;border:1.5px solid var(--orange);margin-bottom:12px;cursor:pointer;align-items:center">
+              <span style="font-size:1.3rem">🚀</span>
+              <div style="flex:1">
+                <div style="font-size:0.9rem;font-weight:700;color:var(--ivory)">Express Delivery</div>
+                <div style="font-size:0.8rem;color:var(--gray-600)">Delivered within 1–2 business days</div>
+              </div>
+              <div style="font-size:0.9rem;font-weight:700;color:var(--orange)">₹99</div>
+            </div>
+            <div class="delivery-option" style="display:flex;gap:16px;padding:16px 20px;background:var(--gray-100);border-radius:12px;border:1.5px solid rgba(255,255,255,0.06);margin-bottom:12px;cursor:pointer;align-items:center">
+              <span style="font-size:1.3rem">🚚</span>
+              <div style="flex:1">
+                <div style="font-size:0.9rem;font-weight:700;color:var(--ivory)">Standard Delivery</div>
+                <div style="font-size:0.8rem;color:var(--gray-600)">Delivered within 3–5 business days</div>
+              </div>
+              <div style="font-size:0.9rem;font-weight:700;color:#4CAF50">FREE</div>
+            </div>
+            <div class="delivery-option" style="display:flex;gap:16px;padding:16px 20px;background:var(--gray-100);border-radius:12px;border:1.5px solid rgba(255,255,255,0.06);cursor:pointer;align-items:center">
+              <span style="font-size:1.3rem">🏪</span>
+              <div style="flex:1">
+                <div style="font-size:0.9rem;font-weight:700;color:var(--ivory)">Store Pickup</div>
+                <div style="font-size:0.8rem;color:var(--gray-600)">Pick up from ASKR store (MG Road, Bengaluru)</div>
+              </div>
+              <div style="font-size:0.9rem;font-weight:700;color:#4CAF50">FREE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="order-summary">
+          <div class="summary-title">Order Summary</div>
+          <div style="margin-bottom:16px">
+            <div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)">
+              <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=80&q=80" alt="" style="width:50px;height:60px;object-fit:cover;border-radius:8px"/>
+              <div><div style="font-size:0.82rem;color:var(--ivory)">Urban Black Hoodie</div><div style="font-size:0.75rem;color:var(--gray-600)">M · Black · ×1</div></div>
+              <div style="margin-left:auto;font-size:0.85rem;font-weight:600;color:var(--ivory)">₹1,299</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)">
+              <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=80&q=80" alt="" style="width:50px;height:60px;object-fit:cover;border-radius:8px"/>
+              <div><div style="font-size:0.82rem;color:var(--ivory)">Flowy Summer Dress</div><div style="font-size:0.75rem;color:var(--gray-600)">S · Blue · ×1</div></div>
+              <div style="margin-left:auto;font-size:0.85rem;font-weight:600;color:var(--ivory)">₹1,199</div>
+            </div>
+          </div>
+          <div class="summary-row"><span class="label">Subtotal</span><span class="value">₹5,696</span></div>
+          <div class="summary-row"><span class="label">Delivery</span><span class="value">₹99</span></div>
+          <div class="summary-row"><span class="label">Tax (GST)</span><span class="value">₹284</span></div>
+          <div class="summary-row total"><span class="label">Total</span><span class="value">₹6,079</span></div>
+          <a href="payment.html" class="btn btn-primary btn-lg" style="width:100%;margin-top:20px;justify-content:center">Continue to Payment →</a>
+          <div class="security-badges" style="justify-content:center;margin-top:16px">
+            <div class="security-badge">🔒 SSL Secure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="footer-container"></div>
+<div class="toast-container"></div>
+<script src="components.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
