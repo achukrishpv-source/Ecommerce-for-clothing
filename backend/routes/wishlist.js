@@ -2,6 +2,10 @@ const router = require('express').Router();
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+axios.get(`${API_URL}/api/products`);
+
 // GET /api/wishlist
 router.get('/', auth, async (req, res) => {
   try {

@@ -1,0 +1,21 @@
+{
+  "name": "askr-clothing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/achukrishpv-source/Ecommerce-for-clothing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/achukrishpv-source/Ecommerce-for-clothing/issues"
+  },
+  "homepage": "https://github.com/achukrishpv-source/Ecommerce-for-clothing#readme"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SECE-24-28/fsd-project-state-props-and-hooks-in-all-forms-achukrishpv-source.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SECE-24-28/fsd-project-state-props-and-hooks-in-all-forms-achukrishpv-source/issues"
+  },
+  "homepage": "https://github.com/SECE-24-28/fsd-project-state-props-and-hooks-in-all-forms-achukrishpv-source#readme"
+}
