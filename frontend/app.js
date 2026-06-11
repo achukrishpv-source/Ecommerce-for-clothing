@@ -208,21 +208,25 @@ function initCartButtons() {
   document.querySelectorAll('.btn-add-cart').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const id = btn.dataset.id;
-      const existing = ASKR.cart.find(i => i.id === id && i.size === (btn.dataset.size || 'M'));
+      const id   = btn.dataset.id;
+      const size = btn.dataset.size || 'M';
+
+      // Auto-grab the product image from the nearest card img tag
+      const card = btn.closest('.product-card') || btn.closest('.product-image-wrapper')?.parentElement;
+      const imgEl = card ? card.querySelector('.product-image-wrapper img') : null;
+      const image = btn.dataset.image || (imgEl ? imgEl.src : '');
+
+      const existing = ASKR.cart.find(i => i.id === id && i.size === size);
       ASKR.addToCart({
         id,
-        name: btn.dataset.name || 'Product',
+        name:  btn.dataset.name  || 'Product',
         price: parseFloat(btn.dataset.price || 0),
-        image: btn.dataset.image || '',
-        size: btn.dataset.size || 'M',
+        image,
+        size,
         color: btn.dataset.color || 'Default'
       });
-      if (existing) {
-        btn.textContent = `In Cart (${existing.qty + 1})`;
-      } else {
-        btn.textContent = 'In Cart (1)';
-      }
+      const newQty = existing ? existing.qty : 1;
+      btn.textContent = `In Cart (${newQty})`;
       btn.style.background = 'var(--gold)';
       setTimeout(() => {
         btn.textContent = 'Add to Cart';
@@ -279,24 +283,28 @@ function renderCart() {
 
   container.innerHTML = ASKR.cart.map(item => `
     <div class="cart-item" data-id="${item.id}" data-size="${item.size}">
-      <div class="cart-item-img"><img src="${item.image || 'https://via.placeholder.com/100'}" alt="${item.name}"/></div>
+      <div class="cart-item-img">
+        <img src="${item.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=70'}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover" onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=70'" />
+      </div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
         <div class="cart-item-variant">Size: ${item.size} &nbsp;|&nbsp; Color: ${item.color}</div>
-        <div class="qty-control">
-          <button class="qty-btn" data-action="dec">−</button>
+        <div class="cart-item-price" style="margin:6px 0">₹${item.price.toLocaleString('en-IN')} each</div>
+        <div class="qty-control" style="margin-top:8px">
+          <button class="qty-btn" data-action="dec" style="font-size:1.1rem;font-weight:700">−</button>
           <input type="number" class="qty-input" value="${item.qty}" min="1" max="10" readonly />
-          <button class="qty-btn" data-action="inc">+</button>
+          <button class="qty-btn" data-action="inc" style="font-size:1.1rem;font-weight:700">+</button>
         </div>
       </div>
       <div style="text-align:right;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end">
-        <div class="cart-item-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+        <div class="cart-item-price" style="font-size:1.1rem">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
         <div class="cart-item-remove" onclick="removeCartItem('${item.id}','${item.size}')">🗑️ Remove</div>
       </div>
     </div>
   `).join('');
 
-  document.getElementById('cart-count-label').textContent = `(${ASKR.cart.length} item${ASKR.cart.length > 1 ? 's' : ''})`;
+  const countLabel = document.getElementById('cart-count-label');
+  if (countLabel) countLabel.textContent = `(${ASKR.cart.length} item${ASKR.cart.length > 1 ? 's' : ''})`;
   updateCartSummary();
   initQtyControls();
 }
@@ -621,6 +629,13 @@ function initDeliveryOptions() {
       opt.classList.add('selected');
     });
   });
+}
+
+// ===== SAVE ORDER TO LOCALSTORAGE =====
+function saveOrderToStorage(orderData) {
+  const orders = JSON.parse(localStorage.getItem('askr_orders') || '[]');
+  orders.unshift(orderData);
+  localStorage.setItem('askr_orders', JSON.stringify(orders));
 }
 
 // ===== INIT ALL =====

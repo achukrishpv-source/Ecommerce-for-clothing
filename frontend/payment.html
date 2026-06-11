@@ -104,13 +104,26 @@
         <!-- SUMMARY -->
         <div class="order-summary">
           <div class="summary-title">Order Total</div>
-          <div class="summary-row"><span class="label">Subtotal</span><span class="value">₹5,696</span></div>
-          <div class="summary-row"><span class="label">Delivery</span><span class="value">₹99</span></div>
-          <div class="summary-row"><span class="label">Tax (GST)</span><span class="value">₹284</span></div>
-          <div class="summary-row total"><span class="label">Total</span><span class="value">₹6,079</span></div>
-          <a href="order-success.html" class="btn btn-primary btn-lg" style="width:100%;margin-top:20px;justify-content:center" onclick="this.innerHTML='⏳ Processing...'">
-            Pay ₹6,079 →
-          </a>
+
+          <!-- Delivery address preview -->
+          <div id="payAddrPreview" style="margin-bottom:16px;padding:12px;background:rgba(255,107,0,0.06);border:1px solid rgba(255,107,0,0.15);border-radius:10px;display:none">
+            <div style="font-size:0.68rem;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">📍 Delivering To</div>
+            <div id="payAddrText" style="font-size:0.78rem;color:var(--gray-700);line-height:1.5"></div>
+          </div>
+
+          <!-- Delivery method preview -->
+          <div id="payDeliveryPreview" style="margin-bottom:16px;padding:10px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;display:none">
+            <div style="font-size:0.68rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">🚚 Delivery Method</div>
+            <div id="payDeliveryText" style="font-size:0.82rem;color:var(--ivory);font-weight:600"></div>
+          </div>
+
+          <div class="summary-row"><span class="label">Subtotal</span><span class="value" id="pay-subtotal">₹0</span></div>
+          <div class="summary-row"><span class="label">Delivery</span><span class="value" id="pay-delivery">₹0</span></div>
+          <div class="summary-row"><span class="label">Tax (GST 5%)</span><span class="value" id="pay-tax">₹0</span></div>
+          <div class="summary-row total"><span class="label">Total</span><span class="value" id="pay-total">₹0</span></div>
+          <button class="btn btn-primary btn-lg" style="width:100%;margin-top:20px;justify-content:center" id="payBtn" onclick="processPayment(this)">
+            Pay Now →
+          </button>
           <p style="text-align:center;font-size:0.75rem;color:var(--gray-500);margin-top:12px">🔒 Your payment is 100% secure</p>
         </div>
       </div>
@@ -121,5 +134,47 @@
 <div class="toast-container"></div>
 <script src="components.js"></script>
 <script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const data = JSON.parse(sessionStorage.getItem('askr_checkout') || 'null');
+
+  if (data) {
+    // Address preview
+    const a = data.address;
+    if (a) {
+      document.getElementById('payAddrPreview').style.display = 'block';
+      document.getElementById('payAddrText').innerHTML =
+        `<strong style="color:var(--ivory)">${a.name}</strong> &middot; ${a.phone}<br>${a.street}, ${a.city}, ${a.state} &ndash; ${a.pin}`;
+    }
+    // Delivery preview
+    const d = data.delivery;
+    if (d) {
+      document.getElementById('payDeliveryPreview').style.display = 'block';
+      document.getElementById('payDeliveryText').textContent =
+        `${d.label} &middot; ETA: ${d.eta}`;
+    }
+    // Amounts
+    document.getElementById('pay-subtotal').textContent = '\u20b9' + data.subtotal.toLocaleString('en-IN');
+    const delivEl = document.getElementById('pay-delivery');
+    if (data.deliveryCharge === 0) { delivEl.textContent = 'FREE'; delivEl.style.color = '#4CAF50'; }
+    else delivEl.textContent = '\u20b9' + data.deliveryCharge;
+    document.getElementById('pay-tax').textContent   = '\u20b9' + data.tax.toLocaleString('en-IN');
+    document.getElementById('pay-total').textContent = '\u20b9' + data.total.toLocaleString('en-IN');
+    document.getElementById('payBtn').textContent    = 'Pay \u20b9' + data.total.toLocaleString('en-IN') + ' \u2192';
+  }
+});
+
+function processPayment(btn) {
+  const method = document.querySelector('.payment-method.selected input[type="radio"]')?.value || 'upi';
+  const methodNames = { upi: 'UPI', card: 'Credit/Debit Card', netbank: 'Net Banking', cod: 'Cash on Delivery' };
+  sessionStorage.setItem('askr_pay_method', methodNames[method] || 'UPI');
+  btn.innerHTML = '\u23f3 Processing...';
+  btn.disabled = true;
+  setTimeout(() => {
+    sessionStorage.removeItem('askr_checkout');
+    window.location.href = 'order-success.html';
+  }, 1800);
+}
+</script>
 </body>
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login – ASKR Clothing</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-auth-page">
+  <div class="admin-auth-bg"></div>
+  <div class="admin-auth-card">
+    <div class="admin-auth-logo">
+      <div class="admin-logo-icon">A</div>
+      <div>
+        <div class="admin-logo-text">ASK<span>R</span></div>
+        <div class="admin-logo-sub">Admin Panel</div>
+      </div>
+    </div>
+    <h2 class="admin-auth-title">Welcome Back</h2>
+    <p class="admin-auth-subtitle">Sign in to manage your store</p>
+    <form id="adminLoginForm">
+      <div class="a-form-group">
+        <label class="a-label">Email Address</label>
+        <input type="email" class="a-input" id="loginEmail" placeholder="admin@askrclothing.com" required />
+      </div>
+      <div class="a-form-group">
+        <label class="a-label">Password</label>
+        <div style="position:relative">
+          <input type="password" class="a-input" id="loginPassword" placeholder="Enter password" required style="padding-right:44px" />
+          <span class="pwd-toggle" onclick="togglePwd()">👁️</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+        <label style="display:flex;align-items:center;gap:8px;font-size:0.83rem;color:var(--a-gray);cursor:pointer">
+          <input type="checkbox" style="accent-color:var(--a-orange)" /> Remember me
+        </label>
+        <a href="#" style="font-size:0.82rem;color:var(--a-orange)">Forgot password?</a>
+      </div>
+      <button type="submit" class="a-btn a-btn-primary" style="width:100%">Sign In to Admin Panel</button>
+      <p id="loginError" style="color:#E53935;font-size:0.82rem;text-align:center;margin-top:12px;display:none">Invalid credentials. Try admin@askrclothing.com / admin123</p>
+    </form>
+    <p style="text-align:center;margin-top:24px;font-size:0.8rem;color:var(--a-gray)">
+      Demo: <strong style="color:var(--a-orange)">admin@askrclothing.com</strong> / <strong style="color:var(--a-orange)">admin123</strong>
+    </p>
+  </div>
+  <script>
+    function togglePwd() {
+      const i = document.getElementById('loginPassword');
+      i.type = i.type === 'password' ? 'text' : 'password';
+    }
+    document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const pass  = document.getElementById('loginPassword').value;
+      if (email === 'admin@askrclothing.com' && pass === 'admin123') {
+        sessionStorage.setItem('askr_admin', '1');
+        window.location.href = 'admin.html';
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

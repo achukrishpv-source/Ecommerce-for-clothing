@@ -23,23 +23,37 @@
       <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--ivory);margin-bottom:12px">Order Confirmed! 🎉</h1>
       <p style="font-size:1rem;color:var(--gray-600);margin-bottom:32px">Thank you for shopping with <span style="color:var(--orange);font-weight:600">ASKR Clothing</span>! Your order has been placed successfully.</p>
 
-      <div class="glass-orange" style="padding:28px 32px;display:inline-block;margin-bottom:40px;text-align:left;min-width:320px">
+      <div class="glass-orange" style="padding:28px 32px;display:inline-block;margin-bottom:32px;text-align:left;min-width:340px;max-width:520px;width:100%">
         <div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:0.88rem">
           <span style="color:var(--gray-600)">Order ID</span>
-          <span style="color:var(--orange);font-weight:700">#ASKR2024-7842</span>
+          <span style="color:var(--orange);font-weight:700" id="so-id">#ASK-...</span>
         </div>
         <div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:0.88rem">
           <span style="color:var(--gray-600)">Order Date</span>
-          <span style="color:var(--ivory);font-weight:500">Dec 27, 2024</span>
+          <span style="color:var(--ivory);font-weight:500" id="so-date">...</span>
         </div>
         <div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:0.88rem">
           <span style="color:var(--gray-600)">Amount Paid</span>
-          <span style="color:var(--ivory);font-weight:700">₹6,079</span>
+          <span style="color:var(--ivory);font-weight:700" id="so-total">₹0</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:0.88rem">
+          <span style="color:var(--gray-600)">Delivery Method</span>
+          <span style="color:var(--orange);font-weight:600" id="so-delivery">...</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:0.88rem">
+          <span style="color:var(--gray-600)">Payment</span>
+          <span style="color:var(--ivory);font-weight:500" id="so-payment">...</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:0.88rem">
+          <span style="color:var(--gray-600)">Estimated Delivery</span>
+          <span style="color:#4CAF50;font-weight:600" id="so-eta">...</span>
         </div>
         <div style="display:flex;justify-content:space-between;font-size:0.88rem">
-          <span style="color:var(--gray-600)">Estimated Delivery</span>
-          <span style="color:#4CAF50;font-weight:600">Dec 31 – Jan 2</span>
+          <span style="color:var(--gray-600)">Deliver To</span>
+          <span style="color:var(--ivory);font-weight:500;text-align:right;max-width:220px" id="so-address">...</span>
         </div>
+        <!-- Order items -->
+        <div id="so-items" style="margin-top:16px;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px"></div>
       </div>
 
       <p style="font-size:0.88rem;color:var(--gray-600);margin-bottom:32px">A confirmation email has been sent to <strong style="color:var(--ivory)">you@example.com</strong></p>
@@ -75,7 +89,79 @@
 <script src="components.js"></script>
 <script src="app.js"></script>
 <script>
-  // Confetti
+  // ===== GENERATE ORDER & SAVE =====
+  (function placeOrder() {
+    const checkout = JSON.parse(sessionStorage.getItem('askr_checkout') || 'null');
+    const cart     = JSON.parse(localStorage.getItem('askr_cart') || '[]');
+
+    const orderId  = '#ASK-' + Date.now().toString().slice(-6);
+    const now      = new Date();
+    const dateStr  = now.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+
+    const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const delivery = checkout?.deliveryCharge ?? 0;
+    const tax      = Math.round(subtotal * 0.05);
+    const total    = checkout?.total ?? (subtotal + delivery + tax);
+
+    const eta = checkout?.delivery?.eta || '3-5 business days';
+    const deliveryLabel = checkout?.delivery?.label || 'Standard Delivery';
+    const address = checkout?.address || null;
+    const payMethod = sessionStorage.getItem('askr_pay_method') || 'UPI';
+
+    // Show on page
+    document.getElementById('so-id').textContent    = orderId;
+    document.getElementById('so-date').textContent   = dateStr;
+    document.getElementById('so-total').textContent  = '\u20b9' + total.toLocaleString('en-IN');
+    document.getElementById('so-eta').textContent    = eta;
+    document.getElementById('so-delivery').textContent = deliveryLabel;
+    document.getElementById('so-payment').textContent  = payMethod;
+    if (address) {
+      const addrEl = document.getElementById('so-address');
+      addrEl.textContent = `${address.name}, ${address.street}, ${address.city} – ${address.pin}`;
+    }
+
+    // Render order items
+    const itemsEl = document.getElementById('so-items');
+    if (itemsEl && cart.length > 0) {
+      itemsEl.innerHTML = cart.map(item => `
+        <div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <img src="${item.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&q=60'}" alt="${item.name}"
+            style="width:52px;height:64px;object-fit:cover;border-radius:8px;flex-shrink:0"
+            onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&q=60'" />
+          <div style="flex:1">
+            <div style="font-size:0.85rem;font-weight:600;color:var(--ivory)">${item.name}</div>
+            <div style="font-size:0.75rem;color:var(--gray-600)">${item.size} &middot; ${item.color} &times;${item.qty}</div>
+          </div>
+          <div style="font-size:0.88rem;font-weight:700;color:var(--ivory)">₹${(item.price*item.qty).toLocaleString('en-IN')}</div>
+        </div>`).join('');
+    }
+
+    // Save order to localStorage (for admin panel)
+    if (cart.length > 0) {
+      saveOrderToStorage({
+        id:       orderId,
+        customer: address?.name || 'Guest',
+        phone:    address?.phone || '',
+        address:  address ? `${address.street}, ${address.city}, ${address.state} – ${address.pin}` : '',
+        items:    cart,
+        itemCount: cart.reduce((s, i) => s + i.qty, 0),
+        subtotal, delivery, tax, total,
+        delivery_method: deliveryLabel,
+        payment:  payMethod,
+        date:     now.toISOString(),
+        dateStr,
+        status:   'placed'
+      });
+    }
+
+    // Clear cart + session
+    localStorage.setItem('askr_cart', '[]');
+    sessionStorage.removeItem('askr_checkout');
+    sessionStorage.removeItem('askr_pay_method');
+    if (window.ASKR) { ASKR.cart = []; ASKR.updateCartBadge(); }
+  })();
+
+  // ===== CONFETTI =====
   const c = document.getElementById('confetti');
   const colors = ['#FF6B00','#D4A017','#FFFFFF','#4CAF50','#FF3D00'];
   for(let i=0;i<80;i++){

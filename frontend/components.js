@@ -26,6 +26,7 @@ function getNavbarHTML(activePage = '') {
           🛒<span class="badge cart-badge" style="display:none">0</span>
         </a>
         <a href="profile.html" class="navbar-icon-btn" title="Profile">👤</a>
+        <a href="admin/admin-login.html" class="navbar-icon-btn" title="Admin" style="font-size:0.7rem;font-weight:700;color:var(--orange);border:1px solid rgba(255,107,0,0.3);border-radius:6px;padding:4px 8px;width:auto">ADMIN</a>
         <button class="hamburger" id="hamburger">
           <span></span><span></span><span></span>
         </button>

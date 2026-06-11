@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard – ASKR Clothing</title>
+  <link rel="stylesheet" href="admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+</head>
+<body class="admin-body">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-logo">
+      <div class="admin-logo-icon">A</div>
+      <div>
+        <div class="admin-logo-text">ASK<span>R</span></div>
+        <div class="admin-logo-sub">Admin</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">Main</div>
+      <a href="#" class="sidebar-link active" data-page="dashboard">
+        <span class="s-icon">📊</span> Dashboard
+      </a>
+      <a href="#" class="sidebar-link" data-page="orders">
+        <span class="s-icon">📦</span> Orders
+        <span class="sidebar-badge" id="pendingBadge">5</span>
+      </a>
+      <a href="#" class="sidebar-link" data-page="products">
+        <span class="s-icon">👕</span> Products
+      </a>
+      <a href="#" class="sidebar-link" data-page="users">
+        <span class="s-icon">👥</span> Users
+      </a>
+      <div class="nav-group-label">Store</div>
+      <a href="#" class="sidebar-link" data-page="inventory">
+        <span class="s-icon">🏪</span> Inventory
+      </a>
+      <a href="#" class="sidebar-link" data-page="coupons">
+        <span class="s-icon">🎟️</span> Coupons
+      </a>
+      <a href="#" class="sidebar-link" data-page="reviews">
+        <span class="s-icon">⭐</span> Reviews
+      </a>
+      <div class="nav-group-label">Settings</div>
+      <a href="#" class="sidebar-link" data-page="settings">
+        <span class="s-icon">⚙️</span> Settings
+      </a>
+      <a href="../home.html" class="sidebar-link" style="margin-top:auto">
+        <span class="s-icon">🌐</span> View Store
+      </a>
+      <a href="#" class="sidebar-link sidebar-logout" onclick="adminLogout()">
+        <span class="s-icon">🚪</span> Logout
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="admin-main" id="adminMain">
+
+    <!-- TOPBAR -->
+    <header class="admin-topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search orders, products, users..." />
+      </div>
+      <div class="topbar-actions">
+        <button class="topbar-btn" onclick="showToastA('No new notifications','info')">🔔<span class="notif-dot"></span></button>
+        <div class="topbar-admin">
+          <div class="topbar-avatar">A</div>
+          <div>
+            <div class="topbar-name">Admin</div>
+            <div class="topbar-role">Super Admin</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="admin-content">
+
+      <!-- ===== DASHBOARD PAGE ===== -->
+      <div class="admin-page active" id="page-dashboard">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Dashboard</h1>
+            <p class="page-sub">Welcome back! Here's what's happening with your store.</p>
+          </div>
+          <div style="display:flex;gap:10px">
+            <select class="a-select" id="dashPeriod" onchange="updateCharts()">
+              <option value="7">Last 7 Days</option>
+              <option value="30" selected>Last 30 Days</option>
+              <option value="90">Last 90 Days</option>
+            </select>
+            <button class="a-btn a-btn-primary a-btn-sm" onclick="showToastA('Report exported!','success')">📥 Export</button>
+          </div>
+        </div>
+
+        <!-- STAT CARDS -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(255,107,0,0.15);color:var(--a-orange)">💰</div>
+            <div class="stat-card-body">
+              <div class="stat-card-label">Total Revenue</div>
+              <div class="stat-card-value" id="statRevenue">₹4,82,390</div>
+              <div class="stat-card-change up">↑ 18.2% vs last period</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(33,150,243,0.15);color:#2196F3">📦</div>
+            <div class="stat-card-body">
+              <div class="stat-card-label">Total Orders</div>
+              <div class="stat-card-value" id="statOrders">1,247</div>
+              <div class="stat-card-change up">↑ 12.5% vs last period</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(76,175,80,0.15);color:#4CAF50">👥</div>
+            <div class="stat-card-body">
+              <div class="stat-card-label">Total Customers</div>
+              <div class="stat-card-value" id="statCustomers">3,841</div>
+              <div class="stat-card-change up">↑ 8.7% vs last period</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(212,160,23,0.15);color:#D4A017">👕</div>
+            <div class="stat-card-body">
+              <div class="stat-card-label">Products Sold</div>
+              <div class="stat-card-value" id="statProducts">2,193</div>
+              <div class="stat-card-change down">↓ 2.1% vs last period</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(156,39,176,0.15);color:#9C27B0">🔄</div>
+            <div class="stat-card-body">
+              <div class="stat-card-label">Avg Order Value</div>
+              <div class="stat-card-value">₹1,387</div>
+              <div class="stat-card-change up">↑ 5.3% vs last period</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(229,57,53,0.15);color:#E53935">↩️</div>
+            <div class="stat-card-body">
+              <div class="stat-card-label">Return Rate</div>
+              <div class="stat-card-value">2.4%</div>
+              <div class="stat-card-change up">↓ 0.3% vs last period</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHARTS ROW -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-header">
+              <h3 class="chart-title">Revenue Overview</h3>
+              <div style="display:flex;gap:8px">
+                <span class="chart-legend"><span style="background:var(--a-orange)"></span>Revenue</span>
+                <span class="chart-legend"><span style="background:var(--a-gold)"></span>Orders</span>
+              </div>
+            </div>
+            <canvas id="revenueChart" height="120"></canvas>
+          </div>
+          <div class="chart-card">
+            <div class="chart-header"><h3 class="chart-title">Sales by Category</h3></div>
+            <canvas id="categoryChart" height="180"></canvas>
+          </div>
+        </div>
+
+        <!-- RECENT ORDERS + TOP PRODUCTS -->
+        <div class="dashboard-bottom-grid">
+          <div class="a-card">
+            <div class="a-card-header">
+              <h3 class="a-card-title">Recent Orders</h3>
+              <a href="#" class="a-link" onclick="switchPage('orders')">View All →</a>
+            </div>
+            <table class="a-table">
+              <thead><tr><th>Order ID</th><th>Customer</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody id="recentOrdersTable"></tbody>
+            </table>
+          </div>
+          <div class="a-card">
+            <div class="a-card-header">
+              <h3 class="a-card-title">Top Products</h3>
+              <a href="#" class="a-link" onclick="switchPage('products')">View All →</a>
+            </div>
+            <div id="topProductsList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ORDERS PAGE ===== -->
+      <div class="admin-page" id="page-orders">
+        <div class="page-header">
+          <div><h1 class="page-title">Orders</h1><p class="page-sub">Manage and track all customer orders</p></div>
+          <button class="a-btn a-btn-primary a-btn-sm" onclick="showToastA('Orders exported!','success')">📥 Export CSV</button>
+        </div>
+        <div class="a-card">
+          <div class="a-card-header" style="flex-wrap:wrap;gap:12px">
+            <div class="a-search-bar"><span>🔍</span><input type="text" placeholder="Search by order ID, customer..." oninput="filterOrders(this.value)" /></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <select class="a-select a-select-sm" onchange="filterOrdersByStatus(this.value)">
+                <option value="">All Status</option>
+                <option value="placed">Placed</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+              <select class="a-select a-select-sm">
+                <option>Sort: Newest</option>
+                <option>Sort: Oldest</option>
+                <option>Sort: Amount ↑</option>
+                <option>Sort: Amount ↓</option>
+              </select>
+            </div>
+          </div>
+          <table class="a-table">
+            <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="ordersTable"></tbody>
+          </table>
+          <div class="a-pagination" id="ordersPagination"></div>
+        </div>
+      </div>
+
+      <!-- ===== PRODUCTS PAGE ===== -->
+      <div class="admin-page" id="page-products">
+        <div class="page-header">
+          <div><h1 class="page-title">Products</h1><p class="page-sub">Add, edit and manage your product catalog</p></div>
+          <button class="a-btn a-btn-primary a-btn-sm" onclick="openProductModal()">+ Add Product</button>
+        </div>
+        <div class="a-card">
+          <div class="a-card-header" style="flex-wrap:wrap;gap:12px">
+            <div class="a-search-bar"><span>🔍</span><input type="text" placeholder="Search products..." oninput="filterProducts(this.value)" /></div>
+            <div style="display:flex;gap:8px">
+              <select class="a-select a-select-sm" onchange="filterProductsByCategory(this.value)">
+                <option value="">All Categories</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="kids">Kids</option>
+                <option value="accessories">Accessories</option>
+              </select>
+            </div>
+          </div>
+          <table class="a-table">
+            <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="productsTable"></tbody>
+          </table>
+          <div class="a-pagination" id="productsPagination"></div>
+        </div>
+      </div>
+
+      <!-- ===== USERS PAGE ===== -->
+      <div class="admin-page" id="page-users">
+        <div class="page-header">
+          <div><h1 class="page-title">Customers</h1><p class="page-sub">View and manage registered customers</p></div>
+          <button class="a-btn a-btn-primary a-btn-sm" onclick="showToastA('Users exported!','success')">📥 Export</button>
+        </div>
+        <div class="a-card">
+          <div class="a-card-header">
+            <div class="a-search-bar"><span>🔍</span><input type="text" placeholder="Search users..." oninput="filterUsers(this.value)" /></div>
+          </div>
+          <table class="a-table">
+            <thead><tr><th>User</th><th>Email</th><th>Phone</th><th>Orders</th><th>Total Spent</th><th>Joined</th><th>Actions</th></tr></thead>
+            <tbody id="usersTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== INVENTORY PAGE ===== -->
+      <div class="admin-page" id="page-inventory">
+        <div class="page-header">
+          <div><h1 class="page-title">Inventory</h1><p class="page-sub">Monitor stock levels and low inventory alerts</p></div>
+          <button class="a-btn a-btn-primary a-btn-sm" onclick="showToastA('Inventory report exported!','success')">📥 Export</button>
+        </div>
+        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr)">
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(76,175,80,0.15);color:#4CAF50">✅</div>
+            <div class="stat-card-body"><div class="stat-card-label">In Stock</div><div class="stat-card-value">142</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(255,152,0,0.15);color:#FF9800">⚠️</div>
+            <div class="stat-card-body"><div class="stat-card-label">Low Stock</div><div class="stat-card-value">18</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:rgba(229,57,53,0.15);color:#E53935">❌</div>
+            <div class="stat-card-body"><div class="stat-card-label">Out of Stock</div><div class="stat-card-value">7</div></div>
+          </div>
+        </div>
+        <div class="a-card">
+          <div class="a-card-header"><h3 class="a-card-title">Stock Levels</h3></div>
+          <table class="a-table">
+            <thead><tr><th>Product</th><th>Category</th><th>SKU</th><th>Stock</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="inventoryTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== COUPONS PAGE ===== -->
+      <div class="admin-page" id="page-coupons">
+        <div class="page-header">
+          <div><h1 class="page-title">Coupons</h1><p class="page-sub">Manage discount codes and offers</p></div>
+          <button class="a-btn a-btn-primary a-btn-sm" onclick="openCouponModal()">+ Create Coupon</button>
+        </div>
+        <div class="a-card">
+          <table class="a-table">
+            <thead><tr><th>Code</th><th>Discount</th><th>Type</th><th>Usage</th><th>Expires</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="couponsTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== REVIEWS PAGE ===== -->
+      <div class="admin-page" id="page-reviews">
+        <div class="page-header">
+          <div><h1 class="page-title">Reviews</h1><p class="page-sub">Moderate customer reviews</p></div>
+        </div>
+        <div class="a-card">
+          <table class="a-table">
+            <thead><tr><th>Customer</th><th>Product</th><th>Rating</th><th>Review</th><th>Date</th><th>Actions</th></tr></thead>
+            <tbody id="reviewsTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== SETTINGS PAGE ===== -->
+      <div class="admin-page" id="page-settings">
+        <div class="page-header">
+          <div><h1 class="page-title">Settings</h1><p class="page-sub">Configure your store settings</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div class="a-card">
+            <div class="a-card-header"><h3 class="a-card-title">🏪 Store Info</h3></div>
+            <div class="a-form-group"><label class="a-label">Store Name</label><input class="a-input" value="ASKR Clothing" /></div>
+            <div class="a-form-group"><label class="a-label">Support Email</label><input class="a-input" value="support@askrclothing.com" /></div>
+            <div class="a-form-group"><label class="a-label">Phone</label><input class="a-input" value="+91 98765 43210" /></div>
+            <div class="a-form-group"><label class="a-label">Address</label><textarea class="a-input" rows="3">Ganapathy, Coimbatore, Tamil Nadu 641006</textarea></div>
+            <button class="a-btn a-btn-primary" onclick="showToastA('Store info saved!','success')">Save Changes</button>
+          </div>
+          <div class="a-card">
+            <div class="a-card-header"><h3 class="a-card-title">💰 Pricing & Shipping</h3></div>
+            <div class="a-form-group"><label class="a-label">Free Shipping Threshold (₹)</label><input class="a-input" value="999" type="number" /></div>
+            <div class="a-form-group"><label class="a-label">GST Rate (%)</label><input class="a-input" value="5" type="number" /></div>
+            <div class="a-form-group"><label class="a-label">Standard Delivery Charge (₹)</label><input class="a-input" value="49" type="number" /></div>
+            <div class="a-form-group"><label class="a-label">Express Delivery Charge (₹)</label><input class="a-input" value="99" type="number" /></div>
+            <button class="a-btn a-btn-primary" onclick="showToastA('Pricing settings saved!','success')">Save Changes</button>
+          </div>
+          <div class="a-card">
+            <div class="a-card-header"><h3 class="a-card-title">🔒 Change Password</h3></div>
+            <div class="a-form-group"><label class="a-label">Current Password</label><input class="a-input" type="password" placeholder="••••••••" /></div>
+            <div class="a-form-group"><label class="a-label">New Password</label><input class="a-input" type="password" placeholder="••••••••" /></div>
+            <div class="a-form-group"><label class="a-label">Confirm New Password</label><input class="a-input" type="password" placeholder="••••••••" /></div>
+            <button class="a-btn a-btn-primary" onclick="showToastA('Password updated!','success')">Update Password</button>
+          </div>
+          <div class="a-card">
+            <div class="a-card-header"><h3 class="a-card-title">🔔 Notifications</h3></div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <label class="a-toggle-row"><span>New Order Alerts</span><input type="checkbox" class="a-toggle" checked /></label>
+              <label class="a-toggle-row"><span>Low Stock Alerts</span><input type="checkbox" class="a-toggle" checked /></label>
+              <label class="a-toggle-row"><span>New Review Alerts</span><input type="checkbox" class="a-toggle" /></label>
+              <label class="a-toggle-row"><span>Daily Sales Report</span><input type="checkbox" class="a-toggle" checked /></label>
+              <label class="a-toggle-row"><span>Customer Signup Alerts</span><input type="checkbox" class="a-toggle" /></label>
+            </div>
+            <button class="a-btn a-btn-primary" style="margin-top:20px" onclick="showToastA('Notification preferences saved!','success')">Save Preferences</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div class="a-modal-overlay" id="productModal" onclick="closeModalOutside(event,'productModal')">
+    <div class="a-modal">
+      <div class="a-modal-header">
+        <h3 id="productModalTitle">Add New Product</h3>
+        <button class="a-modal-close" onclick="closeModal('productModal')">✕</button>
+      </div>
+      <div class="a-modal-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="a-form-group" style="grid-column:span 2"><label class="a-label">Product Name</label><input class="a-input" id="pName" placeholder="e.g. Oxford Formal Shirt" /></div>
+          <div class="a-form-group"><label class="a-label">Category</label>
+            <select class="a-input" id="pCategory">
+              <option value="men">Men</option><option value="women">Women</option>
+              <option value="kids">Kids</option><option value="accessories">Accessories</option>
+            </select>
+          </div>
+          <div class="a-form-group"><label class="a-label">Price (₹)</label><input class="a-input" id="pPrice" type="number" placeholder="1299" /></div>
+          <div class="a-form-group"><label class="a-label">Original Price (₹)</label><input class="a-input" id="pOriginal" type="number" placeholder="1999" /></div>
+          <div class="a-form-group"><label class="a-label">Stock Quantity</label><input class="a-input" id="pStock" type="number" placeholder="50" /></div>
+          <div class="a-form-group" style="grid-column:span 2"><label class="a-label">Image URL</label><input class="a-input" id="pImage" placeholder="https://images.unsplash.com/..." /></div>
+          <div class="a-form-group" style="grid-column:span 2"><label class="a-label">Sizes (comma separated)</label><input class="a-input" id="pSizes" placeholder="XS, S, M, L, XL, XXL" /></div>
+          <div class="a-form-group" style="grid-column:span 2"><label class="a-label">Badge</label>
+            <select class="a-input" id="pBadge"><option value="">None</option><option value="New">New</option><option value="Trending">Trending</option><option value="Sale">Sale</option></select>
+          </div>
+        </div>
+      </div>
+      <div class="a-modal-footer">
+        <button class="a-btn a-btn-ghost" onclick="closeModal('productModal')">Cancel</button>
+        <button class="a-btn a-btn-primary" onclick="saveProduct()">Save Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER DETAIL MODAL -->
+  <div class="a-modal-overlay" id="orderModal" onclick="closeModalOutside(event,'orderModal')">
+    <div class="a-modal" style="max-width:600px">
+      <div class="a-modal-header">
+        <h3>Order Details</h3>
+        <button class="a-modal-close" onclick="closeModal('orderModal')">✕</button>
+      </div>
+      <div class="a-modal-body" id="orderModalBody"></div>
+      <div class="a-modal-footer">
+        <button class="a-btn a-btn-ghost" onclick="closeModal('orderModal')">Close</button>
+        <button class="a-btn a-btn-primary" onclick="showToastA('Order updated!','success');closeModal('orderModal')">Update Status</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COUPON MODAL -->
+  <div class="a-modal-overlay" id="couponModal" onclick="closeModalOutside(event,'couponModal')">
+    <div class="a-modal" style="max-width:480px">
+      <div class="a-modal-header">
+        <h3>Create Coupon</h3>
+        <button class="a-modal-close" onclick="closeModal('couponModal')">✕</button>
+      </div>
+      <div class="a-modal-body">
+        <div class="a-form-group"><label class="a-label">Coupon Code</label><input class="a-input" id="cCode" placeholder="e.g. ASKR20" style="text-transform:uppercase" /></div>
+        <div class="a-form-group"><label class="a-label">Discount (%)</label><input class="a-input" id="cDiscount" type="number" placeholder="20" /></div>
+        <div class="a-form-group"><label class="a-label">Min Order Amount (₹)</label><input class="a-input" id="cMin" type="number" placeholder="499" /></div>
+        <div class="a-form-group"><label class="a-label">Expiry Date</label><input class="a-input" id="cExpiry" type="date" /></div>
+        <div class="a-form-group"><label class="a-label">Max Usage</label><input class="a-input" id="cUsage" type="number" placeholder="100" /></div>
+      </div>
+      <div class="a-modal-footer">
+        <button class="a-btn a-btn-ghost" onclick="closeModal('couponModal')">Cancel</button>
+        <button class="a-btn a-btn-primary" onclick="saveCoupon()">Create Coupon</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="a-toast-container" id="adminToastContainer"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
