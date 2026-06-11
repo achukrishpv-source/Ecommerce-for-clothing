@@ -30,12 +30,12 @@
   <section style="padding:32px 0 0;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06)">
     <div class="container">
       <div class="tabs" id="menTabs">
-        <button class="tab-btn active" data-tab="all">All</button>
-        <button class="tab-btn" data-tab="shirts">Shirts</button>
-        <button class="tab-btn" data-tab="tshirts">T-Shirts</button>
-        <button class="tab-btn" data-tab="jeans">Jeans</button>
-        <button class="tab-btn" data-tab="hoodies">Hoodies</button>
-        <button class="tab-btn" data-tab="jackets">Jackets</button>
+        <button class="tab-btn active" data-filter="all">All</button>
+        <button class="tab-btn" data-filter="shirts">Shirts</button>
+        <button class="tab-btn" data-filter="tshirts">T-Shirts</button>
+        <button class="tab-btn" data-filter="jeans">Jeans</button>
+        <button class="tab-btn" data-filter="hoodies">Hoodies</button>
+        <button class="tab-btn" data-filter="jackets">Jackets</button>
       </div>
     </div>
   </section>
@@ -110,8 +110,8 @@
             <input type="text" placeholder="Search men's products..." class="search-filter-input" />
           </div>
           <div class="collection-header">
-            <span class="collection-count">Showing <strong style="color:var(--orange)">280</strong> products</span>
-            <select class="sort-select">
+            <span class="collection-count">Showing <strong style="color:var(--orange)">9</strong> products</span>
+            <select class="sort-select" id="menSortSelect">
               <option>Sort: Relevance</option>
               <option>Price: Low to High</option>
               <option>Price: High to Low</option>
@@ -121,115 +121,171 @@
             </select>
           </div>
 
-          <div class="tabs-wrapper">
-            <div class="tab-content active" id="all">
-              <div class="grid-3">
-                <div class="product-card" data-name="premium oxford shirt men formal">
-                  <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400&q=80" alt="Shirt" loading="lazy"/>
-                    <div class="product-badges"><span class="product-badge badge-new">New</span></div>
-                    <div class="product-actions">
-                      <button class="product-action-btn" data-wishlist="m1" data-name="Oxford Formal Shirt" data-price="1199">🤍</button>
-                      <a href="product.html" class="product-action-btn">👁</a>
-                    </div>
-                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m1" data-name="Oxford Formal Shirt" data-price="1199">Add to Cart</button></div>
-                  </div>
-                  <div class="product-info">
-                    <div class="product-category">Shirts</div>
-                    <div class="product-name">Oxford Formal Shirt</div>
-                    <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(147)</span></div>
-                    <div class="product-price"><span class="price-current">₹1,199</span><span class="price-original">₹1,799</span><span class="price-discount">33% off</span></div>
-                  </div>
+          <div class="grid-3" id="menProductGrid">
+
+            <div class="product-card" data-name="premium oxford shirt men formal" data-category="shirts" data-price="1199">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400&q=80" alt="Oxford Formal Shirt" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m1" data-name="Oxford Formal Shirt" data-price="1199">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
                 </div>
-                <div class="product-card" data-name="premium graphic tee oversized streetwear">
-                  <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80" alt="T-Shirt" loading="lazy"/>
-                    <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
-                    <div class="product-actions">
-                      <button class="product-action-btn" data-wishlist="m2" data-name="Graphic Oversize Tee" data-price="799">🤍</button>
-                      <a href="product.html" class="product-action-btn">👁</a>
-                    </div>
-                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m2" data-name="Graphic Oversize Tee" data-price="799">Add to Cart</button></div>
-                  </div>
-                  <div class="product-info">
-                    <div class="product-category">T-Shirts</div>
-                    <div class="product-name">Graphic Oversize Tee</div>
-                    <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(302)</span></div>
-                    <div class="product-price"><span class="price-current">₹799</span><span class="price-original">₹1,199</span><span class="price-discount">33% off</span></div>
-                  </div>
-                </div>
-                <div class="product-card" data-name="slim fit denim jeans stretch dark wash">
-                  <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80" alt="Jeans" loading="lazy"/>
-                    <div class="product-actions">
-                      <button class="product-action-btn" data-wishlist="m3" data-name="Slim Fit Jeans" data-price="1599">🤍</button>
-                      <a href="product.html" class="product-action-btn">👁</a>
-                    </div>
-                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m3" data-name="Slim Fit Jeans" data-price="1599">Add to Cart</button></div>
-                  </div>
-                  <div class="product-info">
-                    <div class="product-category">Jeans</div>
-                    <div class="product-name">Slim Fit Dark Wash Jeans</div>
-                    <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(189)</span></div>
-                    <div class="product-price"><span class="price-current">₹1,599</span><span class="price-original">₹2,499</span><span class="price-discount">36% off</span></div>
-                  </div>
-                </div>
-                <div class="product-card" data-name="pullover hoodie warm premium fleece">
-                  <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80" alt="Hoodie" loading="lazy"/>
-                    <div class="product-badges"><span class="product-badge badge-new">New</span></div>
-                    <div class="product-actions">
-                      <button class="product-action-btn" data-wishlist="m4" data-name="Fleece Pullover Hoodie" data-price="1499">🤍</button>
-                      <a href="product.html" class="product-action-btn">👁</a>
-                    </div>
-                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m4" data-name="Fleece Pullover Hoodie" data-price="1499">Add to Cart</button></div>
-                  </div>
-                  <div class="product-info">
-                    <div class="product-category">Hoodies</div>
-                    <div class="product-name">Fleece Pullover Hoodie</div>
-                    <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(267)</span></div>
-                    <div class="product-price"><span class="price-current">₹1,499</span><span class="price-original">₹2,199</span><span class="price-discount">32% off</span></div>
-                  </div>
-                </div>
-                <div class="product-card" data-name="leather bomber jacket premium winter">
-                  <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80" alt="Jacket" loading="lazy"/>
-                    <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
-                    <div class="product-actions">
-                      <button class="product-action-btn" data-wishlist="m5" data-name="Leather Bomber Jacket" data-price="3999">🤍</button>
-                      <a href="product.html" class="product-action-btn">👁</a>
-                    </div>
-                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m5" data-name="Leather Bomber Jacket" data-price="3999">Add to Cart</button></div>
-                  </div>
-                  <div class="product-info">
-                    <div class="product-category">Jackets</div>
-                    <div class="product-name">Leather Bomber Jacket</div>
-                    <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(143)</span></div>
-                    <div class="product-price"><span class="price-current">₹3,999</span><span class="price-original">₹6,499</span><span class="price-discount">38% off</span></div>
-                  </div>
-                </div>
-                <div class="product-card" data-name="linen casual shirt summer lightweight">
-                  <div class="product-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=400&q=80" alt="Shirt" loading="lazy"/>
-                    <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
-                    <div class="product-actions">
-                      <button class="product-action-btn" data-wishlist="m6" data-name="Linen Casual Shirt" data-price="899">🤍</button>
-                      <a href="product.html" class="product-action-btn">👁</a>
-                    </div>
-                    <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m6" data-name="Linen Casual Shirt" data-price="899">Add to Cart</button></div>
-                  </div>
-                  <div class="product-info">
-                    <div class="product-category">Shirts</div>
-                    <div class="product-name">Linen Casual Shirt</div>
-                    <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(98)</span></div>
-                    <div class="product-price"><span class="price-current">₹899</span><span class="price-original">₹1,399</span><span class="price-discount">36% off</span></div>
-                  </div>
-                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m1" data-name="Oxford Formal Shirt" data-price="1199">Add to Cart</button></div>
               </div>
-              <div style="text-align:center;margin-top:40px">
-                <button class="btn btn-outline-orange btn-lg" onclick="showToast('Loading more products...','info')">Load More Products</button>
+              <div class="product-info">
+                <div class="product-category">Shirts</div>
+                <div class="product-name">Oxford Formal Shirt</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(147)</span></div>
+                <div class="product-price"><span class="price-current">₹1,199</span><span class="price-original">₹1,799</span><span class="price-discount">33% off</span></div>
               </div>
             </div>
+
+            <div class="product-card" data-name="premium graphic tee oversized streetwear" data-category="tshirts" data-price="799">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1565693413579-8ff3fdc1b03b?w=400&q=80" alt="Graphic Oversize Tee" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m2" data-name="Graphic Oversize Tee" data-price="799">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m2" data-name="Graphic Oversize Tee" data-price="799">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">T-Shirts</div>
+                <div class="product-name">Graphic Oversize Tee</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(302)</span></div>
+                <div class="product-price"><span class="price-current">₹799</span><span class="price-original">₹1,199</span><span class="price-discount">33% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="slim fit denim jeans stretch dark wash" data-category="jeans" data-price="1599">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=80" alt="Slim Fit Jeans" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1475178626620-a4d074967452?w=400&q=80'"/>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m3" data-name="Slim Fit Jeans" data-price="1599">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m3" data-name="Slim Fit Jeans" data-price="1599">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">Jeans</div>
+                <div class="product-name">Slim Fit Dark Wash Jeans</div>
+                <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(189)</span></div>
+                <div class="product-price"><span class="price-current">₹1,599</span><span class="price-original">₹2,499</span><span class="price-discount">36% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="pullover hoodie warm premium fleece" data-category="hoodies" data-price="1499">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80" alt="Fleece Pullover Hoodie" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m4" data-name="Fleece Pullover Hoodie" data-price="1499">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m4" data-name="Fleece Pullover Hoodie" data-price="1499">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">Hoodies</div>
+                <div class="product-name">Fleece Pullover Hoodie</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(267)</span></div>
+                <div class="product-price"><span class="price-current">₹1,499</span><span class="price-original">₹2,199</span><span class="price-discount">32% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="leather bomber jacket premium winter" data-category="jackets" data-price="3999">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80" alt="Leather Bomber Jacket" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m5" data-name="Leather Bomber Jacket" data-price="3999">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m5" data-name="Leather Bomber Jacket" data-price="3999">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">Jackets</div>
+                <div class="product-name">Leather Bomber Jacket</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(143)</span></div>
+                <div class="product-price"><span class="price-current">₹3,999</span><span class="price-original">₹6,499</span><span class="price-discount">38% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="linen casual shirt summer lightweight" data-category="shirts" data-price="899">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=400&q=80" alt="Linen Casual Shirt" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m6" data-name="Linen Casual Shirt" data-price="899">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m6" data-name="Linen Casual Shirt" data-price="899">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">Shirts</div>
+                <div class="product-name">Linen Casual Shirt</div>
+                <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(98)</span></div>
+                <div class="product-price"><span class="price-current">₹899</span><span class="price-original">₹1,399</span><span class="price-discount">36% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="men cargo jogger pants streetwear" data-category="jeans" data-price="1299">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&q=80" alt="Cargo Jogger Pants" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m7" data-name="Cargo Jogger Pants" data-price="1299">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m7" data-name="Cargo Jogger Pants" data-price="1299">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">Jeans</div>
+                <div class="product-name">Cargo Jogger Pants</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(211)</span></div>
+                <div class="product-price"><span class="price-current">₹1,299</span><span class="price-original">₹1,999</span><span class="price-discount">35% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="men solid plain round neck tshirt cotton" data-category="tshirts" data-price="499">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80" alt="Plain Cotton Tee" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&q=80'"/>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m8" data-name="Plain Cotton T-Shirt" data-price="499">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m8" data-name="Plain Cotton T-Shirt" data-price="499">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">T-Shirts</div>
+                <div class="product-name">Plain Cotton T-Shirt</div>
+                <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(534)</span></div>
+                <div class="product-price"><span class="price-current">₹499</span><span class="price-original">₹799</span><span class="price-discount">38% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="men denim jacket casual streetwear" data-category="jackets" data-price="2299">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400&q=80" alt="Denim Jacket" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="m9" data-name="Denim Street Jacket" data-price="2299">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="m9" data-name="Denim Street Jacket" data-price="2299">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">Jackets</div>
+                <div class="product-name">Denim Street Jacket</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(176)</span></div>
+                <div class="product-price"><span class="price-current">₹2,299</span><span class="price-original">₹3,499</span><span class="price-discount">34% off</span></div>
+              </div>
+            </div>
+
+          </div>
+          <div style="text-align:center;margin-top:40px">
+            <button class="btn btn-outline-orange btn-lg" id="menLoadMore">Load More Products</button>
           </div>
         </div>
       </div>
@@ -241,5 +297,91 @@
 <div class="toast-container"></div>
 <script src="components.js"></script>
 <script src="app.js"></script>
+<script>
+  // Tab filter for men's page
+  document.querySelectorAll('#menTabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#menTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let count = 0;
+      document.querySelectorAll('#menProductGrid .product-card').forEach(card => {
+        const cat = card.dataset.category || '';
+        const show = filter === 'all' || cat === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      const countEl = document.querySelector('.collection-count strong');
+      if (countEl) countEl.textContent = count;
+    });
+  });
+
+  // Load More
+  const menMoreProducts = [
+    { id:'m10', name:'Polo Collar T-Shirt', category:'tshirts', price:649, img:'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&q=80', cat:'T-Shirts', rating:'★★★★☆', count:'(312)', orig:'999', disc:'35% off', badge:'', badgeClass:'' },
+    { id:'m11', name:'Relaxed Fit Chinos', category:'jeans', price:1199, img:'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&q=80', cat:'Jeans', rating:'★★★★★', count:'(178)', orig:'1,799', disc:'33% off', badge:'New', badgeClass:'badge-new' },
+    { id:'m12', name:'Zip-Up Hoodie', category:'hoodies', price:1799, img:'https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?w=400&q=80', cat:'Hoodies', rating:'★★★★★', count:'(245)', orig:'2,699', disc:'33% off', badge:'Trending', badgeClass:'badge-trending' },
+    { id:'m13', name:'Mandarin Collar Shirt', category:'shirts', price:1099, img:'https://images.unsplash.com/photo-1594938298603-c8148c4b4357?w=400&q=80', cat:'Shirts', rating:'★★★★☆', count:'(134)', orig:'1,599', disc:'31% off', badge:'', badgeClass:'' },
+    { id:'m14', name:'Puffer Winter Jacket', category:'jackets', price:3499, img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80', cat:'Jackets', rating:'★★★★★', count:'(89)', orig:'5,499', disc:'36% off', badge:'New', badgeClass:'badge-new' },
+    { id:'m15', name:'Striped Casual Shirt', category:'shirts', price:799, img:'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&q=80', cat:'Shirts', rating:'★★★★☆', count:'(201)', orig:'1,199', disc:'33% off', badge:'Sale', badgeClass:'badge-sale' },
+  ];
+  let menLoaded = false;
+  document.getElementById('menLoadMore').addEventListener('click', () => {
+    if (menLoaded) { showToast('No more products to load', 'info'); return; }
+    const grid = document.getElementById('menProductGrid');
+    menMoreProducts.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.dataset.name = p.name.toLowerCase();
+      card.dataset.category = p.category;
+      card.dataset.price = p.price;
+      card.innerHTML = `
+        <div class="product-image-wrapper">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80'" />
+          ${p.badge ? `<div class="product-badges"><span class="product-badge ${p.badgeClass}">${p.badge}</span></div>` : ''}
+          <div class="product-actions">
+            <button class="product-action-btn" data-wishlist="${p.id}" data-name="${p.name}" data-price="${p.price}">🤍</button>
+            <a href="product.html" class="product-action-btn">👁</a>
+          </div>
+          <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}">Add to Cart</button></div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">${p.cat}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-rating"><span class="stars">${p.rating}</span><span class="rating-count">${p.count}</span></div>
+          <div class="product-price"><span class="price-current">₹${p.price.toLocaleString('en-IN')}</span><span class="price-original">₹${p.orig}</span><span class="price-discount">${p.disc}</span></div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    // Re-init wishlist & cart for new cards
+    initWishlistButtons();
+    initCartButtons();
+    const countEl = document.querySelector('.collection-count strong');
+    if (countEl) countEl.textContent = grid.querySelectorAll('.product-card:not([style*="none"])').length;
+    menLoaded = true;
+    document.getElementById('menLoadMore').textContent = 'All Products Loaded ✓';
+    document.getElementById('menLoadMore').disabled = true;
+    showToast('6 more products loaded!', 'success');
+  });
+
+    const grid = document.getElementById('menProductGrid');
+    const cards = [...grid.querySelectorAll('.product-card')].filter(c => c.style.display !== 'none');
+    const val = this.value;
+    cards.sort((a, b) => {
+      const pa = parseFloat(a.dataset.price || 0);
+      const pb = parseFloat(b.dataset.price || 0);
+      if (val.includes('Low to High')) return pa - pb;
+      if (val.includes('High to Low')) return pb - pa;
+      const ra = (a.querySelector('.stars')?.textContent.match(/★/g) || []).length;
+      const rb = (b.querySelector('.stars')?.textContent.match(/★/g) || []).length;
+      if (val.includes('Top Rated')) return rb - ra;
+      const ca = parseInt(a.querySelector('.rating-count')?.textContent.replace(/\D/g,'') || 0);
+      const cb = parseInt(b.querySelector('.rating-count')?.textContent.replace(/\D/g,'') || 0);
+      if (val.includes('Most Popular')) return cb - ca;
+      return 0;
+    });
+    cards.forEach(c => grid.appendChild(c));
+  });
+</script>
 </body>
 </html>

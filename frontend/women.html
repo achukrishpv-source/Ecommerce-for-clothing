@@ -34,12 +34,12 @@
   <section style="padding:32px 0 0;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06)">
     <div class="container">
       <div class="tabs" id="womenTabs">
-        <button class="tab-btn rose-tab active" data-tab="wall">All</button>
-        <button class="tab-btn rose-tab" data-tab="wsarees">Sarees</button>
-        <button class="tab-btn rose-tab" data-tab="wkurtis">Kurtis</button>
-        <button class="tab-btn rose-tab" data-tab="wdresses">Dresses</button>
-        <button class="tab-btn rose-tab" data-tab="wtops">Tops</button>
-        <button class="tab-btn rose-tab" data-tab="wjeans">Jeans</button>
+        <button class="tab-btn rose-tab active" data-filter="all">All</button>
+        <button class="tab-btn rose-tab" data-filter="sarees">Sarees</button>
+        <button class="tab-btn rose-tab" data-filter="kurtis">Kurtis</button>
+        <button class="tab-btn rose-tab" data-filter="dresses">Dresses</button>
+        <button class="tab-btn rose-tab" data-filter="tops">Tops</button>
+        <button class="tab-btn rose-tab" data-filter="jeans">Jeans</button>
       </div>
     </div>
   </section>
@@ -103,8 +103,8 @@
             <input type="text" placeholder="Search women's products..." class="search-filter-input" />
           </div>
           <div class="collection-header">
-            <span class="collection-count">Showing <strong style="color:var(--rose-gold)">320</strong> products</span>
-            <select class="sort-select">
+            <span class="collection-count">Showing <strong style="color:var(--rose-gold)">9</strong> products</span>
+            <select class="sort-select" id="womenSortSelect">
               <option>Sort: Relevance</option>
               <option>Price: Low to High</option>
               <option>Price: High to Low</option>
@@ -113,10 +113,11 @@
             </select>
           </div>
 
-          <div class="grid-3">
-            <div class="product-card" data-name="premium silk saree traditional elegant">
+          <div class="grid-3" id="womenProductGrid">
+
+            <div class="product-card" data-name="premium silk saree traditional elegant ethnic wedding" data-category="sarees" data-price="2999" data-occasion="ethnic wedding">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80" alt="Saree" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80" alt="Premium Silk Saree" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge" style="background:var(--rose-gold);color:#000">Premium</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="w1" data-name="Premium Silk Saree" data-price="2999">🤍</button>
@@ -131,9 +132,10 @@
                 <div class="product-price"><span class="price-current">₹2,999</span><span class="price-original">₹4,999</span><span class="price-discount">40% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="embroidered kurti cotton ethnic">
+
+            <div class="product-card" data-name="embroidered kurti cotton ethnic casual" data-category="kurtis" data-price="999" data-occasion="ethnic casual">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80" alt="Kurti" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=400&q=80" alt="Embroidered Kurti" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="w2" data-name="Embroidered Kurti" data-price="999">🤍</button>
@@ -148,9 +150,10 @@
                 <div class="product-price"><span class="price-current">₹999</span><span class="price-original">₹1,599</span><span class="price-discount">38% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="maxi dress elegant party long floral">
+
+            <div class="product-card" data-name="maxi dress elegant party long floral" data-category="dresses" data-price="1799" data-occasion="party casual">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=400&q=80" alt="Dress" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=400&q=80" alt="Floral Maxi Dress" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="w3" data-name="Floral Maxi Dress" data-price="1799">🤍</button>
@@ -165,9 +168,10 @@
                 <div class="product-price"><span class="price-current">₹1,799</span><span class="price-original">₹2,799</span><span class="price-discount">36% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="crop top casual trendy women summer">
+
+            <div class="product-card" data-name="crop top casual trendy women summer" data-category="tops" data-price="599" data-occasion="casual">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&q=80" alt="Top" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1503342394128-c104d54dba01?w=400&q=80" alt="Casual Crop Top" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80'"/>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="w4" data-name="Casual Crop Top" data-price="599">🤍</button>
                   <a href="product.html" class="product-action-btn">👁</a>
@@ -181,9 +185,10 @@
                 <div class="product-price"><span class="price-current">₹599</span><span class="price-original">₹899</span><span class="price-discount">33% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="women high waist skinny jeans denim">
+
+            <div class="product-card" data-name="women high waist skinny jeans denim" data-category="jeans" data-price="1299" data-occasion="casual">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1566206091558-7f218b696731?w=400&q=80" alt="Jeans" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80" alt="High Waist Skinny Jeans" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1475178626620-a4d074967452?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="w5" data-name="High Waist Skinny Jeans" data-price="1299">🤍</button>
@@ -198,9 +203,10 @@
                 <div class="product-price"><span class="price-current">₹1,299</span><span class="price-original">₹1,999</span><span class="price-discount">35% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="anarkali suit ethnic traditional party">
+
+            <div class="product-card" data-name="anarkali suit ethnic traditional party wedding" data-category="kurtis" data-price="2199" data-occasion="ethnic party wedding">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80" alt="Suit" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=400&q=80" alt="Anarkali Ethnic Suit" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge" style="background:var(--rose-gold);color:#000">Premium</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="w6" data-name="Anarkali Ethnic Suit" data-price="2199">🤍</button>
@@ -215,9 +221,64 @@
                 <div class="product-price"><span class="price-current">₹2,199</span><span class="price-original">₹3,499</span><span class="price-discount">37% off</span></div>
               </div>
             </div>
+
+            <div class="product-card" data-name="women formal blazer office coat elegant" data-category="tops" data-price="2499" data-occasion="formal">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1548549557-dbe9155463e0?w=400&q=80" alt="Formal Blazer" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-new">New</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w7" data-name="Women Formal Blazer" data-price="2499">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w7" data-name="Women Formal Blazer" data-price="2499">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Tops</div>
+                <div class="product-name">Women Formal Blazer</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(119)</span></div>
+                <div class="product-price"><span class="price-current">₹2,499</span><span class="price-original">₹3,999</span><span class="price-discount">38% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="women printed cotton saree casual daily" data-category="sarees" data-price="1299" data-occasion="casual ethnic">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1617627143233-8cf1d3f29a25?w=400&q=80" alt="Printed Cotton Saree" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w8" data-name="Printed Cotton Saree" data-price="1299">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w8" data-name="Printed Cotton Saree" data-price="1299">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Sarees</div>
+                <div class="product-name">Printed Cotton Saree</div>
+                <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(203)</span></div>
+                <div class="product-price"><span class="price-current">₹1,299</span><span class="price-original">₹2,099</span><span class="price-discount">38% off</span></div>
+              </div>
+            </div>
+
+            <div class="product-card" data-name="women mini skirt floral summer party" data-category="dresses" data-price="899" data-occasion="casual party">
+              <div class="product-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&q=80" alt="Floral Mini Skirt" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80'"/>
+                <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
+                <div class="product-actions">
+                  <button class="product-action-btn" data-wishlist="w9" data-name="Floral Mini Skirt" data-price="899">🤍</button>
+                  <a href="product.html" class="product-action-btn">👁</a>
+                </div>
+                <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="w9" data-name="Floral Mini Skirt" data-price="899">Add to Cart</button></div>
+              </div>
+              <div class="product-info">
+                <div class="product-category" style="color:var(--rose-gold)">Dresses</div>
+                <div class="product-name">Floral Mini Skirt</div>
+                <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(287)</span></div>
+                <div class="product-price"><span class="price-current">₹899</span><span class="price-original">₹1,499</span><span class="price-discount">40% off</span></div>
+              </div>
+            </div>
+
           </div>
           <div style="text-align:center;margin-top:40px">
-            <button class="btn btn-lg" style="background:linear-gradient(135deg,var(--rose-gold),#8B6914);color:#000" onclick="showToast('Loading more products...','info')">Load More ›</button>
+            <button class="btn btn-lg" id="womenLoadMore" style="background:linear-gradient(135deg,var(--rose-gold),#8B6914);color:#000">Load More ›</button>
           </div>
         </div>
       </div>
@@ -229,5 +290,88 @@
 <div class="toast-container"></div>
 <script src="components.js"></script>
 <script src="app.js"></script>
+<script>
+  // Tab filter for women's page
+  document.querySelectorAll('#womenTabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#womenTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let count = 0;
+      document.querySelectorAll('#womenProductGrid .product-card').forEach(card => {
+        const cat = card.dataset.category || '';
+        const show = filter === 'all' || cat === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      const countEl = document.querySelector('.collection-count strong');
+      if (countEl) countEl.textContent = count;
+    });
+  });
+
+  // Load More
+  const womenMoreProducts = [
+    { id:'w10', name:'Palazzo Pants', category:'jeans', price:899, img:'https://images.unsplash.com/photo-1533659124865-d6072dc035e1?w=400&q=80', cat:'Jeans', rating:'★★★★★', count:'(189)', orig:'1,399', disc:'36% off', badge:'New', badgeClass:'badge-new' },
+    { id:'w11', name:'Ruffle Sleeve Top', category:'tops', price:749, img:'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80', cat:'Tops', rating:'★★★★☆', count:'(211)', orig:'1,199', disc:'38% off', badge:'Trending', badgeClass:'badge-trending' },
+    { id:'w12', name:'Chanderi Silk Kurti', category:'kurtis', price:1599, img:'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80', cat:'Kurtis', rating:'★★★★★', count:'(143)', orig:'2,499', disc:'36% off', badge:'Premium', badgeClass:'' },
+    { id:'w13', name:'Wrap Midi Dress', category:'dresses', price:1399, img:'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80', cat:'Dresses', rating:'★★★★★', count:'(267)', orig:'2,199', disc:'36% off', badge:'', badgeClass:'' },
+    { id:'w14', name:'Banarasi Georgette Saree', category:'sarees', price:3499, img:'https://images.unsplash.com/photo-1617627143233-8cf1d3f29a25?w=400&q=80', cat:'Sarees', rating:'★★★★★', count:'(98)', orig:'5,999', disc:'42% off', badge:'Premium', badgeClass:'' },
+    { id:'w15', name:'Printed Crop Hoodie', category:'tops', price:1099, img:'https://images.unsplash.com/photo-1548549557-dbe9155463e0?w=400&q=80', cat:'Tops', rating:'★★★★☆', count:'(176)', orig:'1,699', disc:'35% off', badge:'New', badgeClass:'badge-new' },
+  ];
+  let womenLoaded = false;
+  document.getElementById('womenLoadMore').addEventListener('click', () => {
+    if (womenLoaded) { showToast('No more products to load', 'info'); return; }
+    const grid = document.getElementById('womenProductGrid');
+    womenMoreProducts.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.dataset.name = p.name.toLowerCase();
+      card.dataset.category = p.category;
+      card.dataset.price = p.price;
+      card.innerHTML = `
+        <div class="product-image-wrapper">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80'" />
+          ${p.badge ? `<div class="product-badges"><span class="product-badge ${p.badgeClass}" style="${p.badge==='Premium'?'background:var(--rose-gold);color:#000':''}">${p.badge}</span></div>` : ''}
+          <div class="product-actions">
+            <button class="product-action-btn" data-wishlist="${p.id}" data-name="${p.name}" data-price="${p.price}">🤍</button>
+            <a href="product.html" class="product-action-btn">👁</a>
+          </div>
+          <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}">Add to Cart</button></div>
+        </div>
+        <div class="product-info">
+          <div class="product-category" style="color:var(--rose-gold)">${p.cat}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-rating"><span class="stars">${p.rating}</span><span class="rating-count">${p.count}</span></div>
+          <div class="product-price"><span class="price-current">₹${p.price.toLocaleString('en-IN')}</span><span class="price-original">₹${p.orig}</span><span class="price-discount">${p.disc}</span></div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    initWishlistButtons();
+    initCartButtons();
+    const countEl = document.querySelector('.collection-count strong');
+    if (countEl) countEl.textContent = grid.querySelectorAll('.product-card:not([style*="none"])').length;
+    womenLoaded = true;
+    const btn = document.getElementById('womenLoadMore');
+    btn.textContent = 'All Products Loaded ✓';
+    btn.disabled = true;
+    showToast('6 more products loaded!', 'success');
+  });
+
+    const grid = document.getElementById('womenProductGrid');
+    const cards = [...grid.querySelectorAll('.product-card')].filter(c => c.style.display !== 'none');
+    const val = this.value;
+    cards.sort((a, b) => {
+      const pa = parseFloat(a.dataset.price || 0);
+      const pb = parseFloat(b.dataset.price || 0);
+      if (val.includes('Low to High')) return pa - pb;
+      if (val.includes('High to Low')) return pb - pa;
+      const ra = (a.querySelector('.stars')?.textContent.match(/★/g) || []).length;
+      const rb = (b.querySelector('.stars')?.textContent.match(/★/g) || []).length;
+      if (val.includes('Top Rated')) return rb - ra;
+      return 0;
+    });
+    cards.forEach(c => grid.appendChild(c));
+  });
+</script>
 </body>
 </html>

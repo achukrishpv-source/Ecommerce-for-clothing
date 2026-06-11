@@ -30,12 +30,12 @@
   <section style="padding:32px 0 0;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06)">
     <div class="container">
       <div class="tabs" id="accTabs">
-        <button class="tab-btn active" data-tab="acc-all">All</button>
-        <button class="tab-btn" data-tab="acc-men">Men</button>
-        <button class="tab-btn" data-tab="acc-women">Women</button>
-        <button class="tab-btn" data-tab="acc-kids">Kids</button>
-        <button class="tab-btn" data-tab="acc-jewellery">Jewellery</button>
-        <button class="tab-btn" data-tab="acc-bags">Bags & Wallets</button>
+        <button class="tab-btn active" data-filter="acc-all">All</button>
+        <button class="tab-btn" data-filter="acc-men">Men</button>
+        <button class="tab-btn" data-filter="acc-women">Women</button>
+        <button class="tab-btn" data-filter="acc-kids">Kids</button>
+        <button class="tab-btn" data-filter="acc-jewellery">Jewellery</button>
+        <button class="tab-btn" data-filter="acc-bags">Bags & Wallets</button>
       </div>
     </div>
   </section>
@@ -87,8 +87,8 @@
             <input type="text" placeholder="Search accessories..." class="search-filter-input" />
           </div>
           <div class="collection-header">
-            <span class="collection-count">Showing <strong style="color:var(--orange)">180</strong> products</span>
-            <select class="sort-select">
+            <span class="collection-count">Showing <strong style="color:var(--orange)">18</strong> products</span>
+            <select class="sort-select" id="accSortSelect">
               <option>Sort: Relevance</option>
               <option>Price: Low to High</option>
               <option>Price: High to Low</option>
@@ -98,18 +98,16 @@
           </div>
 
           <div class="tabs-wrapper">
-
-            <!-- ALL TAB -->
-            <div class="tab-content active" id="acc-all">
+            <div id="accProductGrid">
 
               <!-- MEN'S ACCESSORIES -->
               <div style="margin-bottom:40px">
                 <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08)">👔 Men's Accessories</h3>
                 <div class="grid-3">
 
-                  <div class="product-card" data-name="men leather wallet bifold premium">
+                  <div class="product-card" data-name="men leather wallet bifold premium" data-category="acc-men acc-bags" data-price="899">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Wallet" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Wallet" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-m1" data-name="Premium Leather Wallet" data-price="899">🤍</button>
@@ -125,9 +123,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="men sunglasses aviator uv protection">
+                  <div class="product-card" data-name="men sunglasses aviator uv protection" data-category="acc-men" data-price="699">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80" alt="Sunglasses" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80" alt="Sunglasses" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-m2" data-name="Aviator Sunglasses" data-price="699">🤍</button>
@@ -143,9 +141,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="men stainless steel bracelet chain">
+                  <div class="product-card" data-name="men stainless steel bracelet chain" data-category="acc-men acc-jewellery" data-price="599">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80" alt="Bracelet" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80" alt="Bracelet" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80'"/>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-m3" data-name="Steel Chain Bracelet" data-price="599">🤍</button>
                         <a href="product.html" class="product-action-btn">👁</a>
@@ -160,9 +158,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="men cap baseball streetwear hat">
+                  <div class="product-card" data-name="men cap baseball streetwear hat" data-category="acc-men" data-price="449">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&q=80" alt="Cap" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&q=80" alt="Cap" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-m4" data-name="Street Baseball Cap" data-price="449">🤍</button>
@@ -178,9 +176,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="men watch analog stainless steel luxury">
+                  <div class="product-card" data-name="men watch analog stainless steel luxury" data-category="acc-men acc-jewellery" data-price="2499">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Watch" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Watch" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-m5" data-name="Premium Analog Watch" data-price="2499">🤍</button>
@@ -196,9 +194,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="men leather belt formal buckle">
+                  <div class="product-card" data-name="men leather belt formal buckle" data-category="acc-men" data-price="599">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1624222247344-550fb60fe8ff?w=400&q=80" alt="Belt" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1624222247344-550fb60fe8ff?w=400&q=80" alt="Belt" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-m6" data-name="Genuine Leather Belt" data-price="599">🤍</button>
@@ -222,9 +220,9 @@
                 <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08)">👗 Women's Accessories & Jewellery</h3>
                 <div class="grid-3">
 
-                  <div class="product-card" data-name="women gold necklace pendant chain jewellery">
+                  <div class="product-card" data-name="women gold necklace pendant chain jewellery" data-category="acc-women acc-jewellery" data-price="1299">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80" alt="Necklace" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80" alt="Necklace" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-w1" data-name="Gold Pendant Necklace" data-price="1299">🤍</button>
@@ -240,9 +238,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="women earrings drop gold hoops elegant">
+                  <div class="product-card" data-name="women earrings drop gold hoops elegant" data-category="acc-women acc-jewellery" data-price="799">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&q=80" alt="Earrings" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&q=80" alt="Earrings" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-w2" data-name="Gold Hoop Earrings" data-price="799">🤍</button>
@@ -258,9 +256,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="women handbag tote leather shoulder bag">
+                  <div class="product-card" data-name="women handbag tote leather shoulder bag" data-category="acc-women acc-bags" data-price="1899">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80" alt="Handbag" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80" alt="Handbag" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-w3" data-name="Premium Tote Handbag" data-price="1899">🤍</button>
@@ -276,9 +274,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="women bangles gold set bridal traditional">
+                  <div class="product-card" data-name="women bangles gold set bridal traditional" data-category="acc-women acc-jewellery" data-price="1099">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1573408301185-9519f94ddb72?w=400&q=80" alt="Bangles" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1573408301185-9519f94ddb72?w=400&q=80" alt="Bangles" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80'"/>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-w4" data-name="Gold Bangle Set" data-price="1099">🤍</button>
                         <a href="product.html" class="product-action-btn">👁</a>
@@ -293,9 +291,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="women scarf silk printed stole wrap">
+                  <div class="product-card" data-name="women scarf silk printed stole wrap" data-category="acc-women" data-price="599">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1601924351433-3d7544f03dcc?w=400&q=80" alt="Scarf" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1601924351433-3d7544f03dcc?w=400&q=80" alt="Scarf" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-w5" data-name="Silk Printed Scarf" data-price="599">🤍</button>
@@ -311,9 +309,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="women ring stone silver adjustable">
+                  <div class="product-card" data-name="women ring stone silver adjustable" data-category="acc-women acc-jewellery" data-price="499">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=80" alt="Ring" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=80" alt="Ring" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-w6" data-name="Silver Stone Ring" data-price="499">🤍</button>
@@ -337,9 +335,9 @@
                 <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08)">🧒 Kids' Accessories</h3>
                 <div class="grid-3">
 
-                  <div class="product-card" data-name="kids hairband colorful elastic floral">
+                  <div class="product-card" data-name="kids hairband colorful elastic floral" data-category="acc-kids" data-price="299">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400&q=80" alt="Hairband" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400&q=80" alt="Hairband" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-k1" data-name="Kids Floral Hairband Set" data-price="299">🤍</button>
@@ -355,9 +353,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="kids backpack school bag cartoon">
+                  <div class="product-card" data-name="kids backpack school bag cartoon" data-category="acc-kids acc-bags" data-price="799">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Backpack" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Backpack" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-k2" data-name="Kids Cartoon Backpack" data-price="799">🤍</button>
@@ -373,9 +371,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="kids bracelet friendship beads colorful">
+                  <div class="product-card" data-name="kids bracelet friendship beads colorful" data-category="acc-kids acc-jewellery" data-price="199">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80" alt="Bracelet" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80" alt="Bracelet" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=80'"/>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-k3" data-name="Kids Bead Bracelet Set" data-price="199">🤍</button>
                         <a href="product.html" class="product-action-btn">👁</a>
@@ -390,9 +388,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="kids cap sun hat summer beach">
+                  <div class="product-card" data-name="kids cap sun hat summer beach" data-category="acc-kids" data-price="349">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&q=80" alt="Kids Cap" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&q=80" alt="Kids Cap" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-k4" data-name="Kids Summer Cap" data-price="349">🤍</button>
@@ -408,9 +406,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="kids necklace pearl butterfly pendant girls">
+                  <div class="product-card" data-name="kids necklace pearl butterfly pendant girls" data-category="acc-kids acc-jewellery" data-price="249">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=80" alt="Kids Necklace" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=80" alt="Kids Necklace" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-k5" data-name="Kids Butterfly Necklace" data-price="249">🤍</button>
@@ -426,9 +424,9 @@
                     </div>
                   </div>
 
-                  <div class="product-card" data-name="kids sunglasses uv protection boys girls fun">
+                  <div class="product-card" data-name="kids sunglasses uv protection boys girls fun" data-category="acc-kids" data-price="299">
                     <div class="product-image-wrapper">
-                      <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=400&q=80" alt="Kids Sunglasses" loading="lazy"/>
+                      <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=400&q=80" alt="Kids Sunglasses" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80'"/>
                       <div class="product-badges"><span class="product-badge badge-trending">Trending</span></div>
                       <div class="product-actions">
                         <button class="product-action-btn" data-wishlist="ac-k6" data-name="Kids UV Sunglasses" data-price="299">🤍</button>
@@ -446,12 +444,10 @@
 
                 </div>
               </div>
-
-              <div style="text-align:center;margin-top:20px">
-                <button class="btn btn-outline-orange btn-lg" onclick="showToast('Loading more products...','info')">Load More Products</button>
-              </div>
             </div>
-
+          </div>
+          <div style="text-align:center;margin-top:20px">
+            <button class="btn btn-outline-orange btn-lg" id="accLoadMore">Load More Products</button>
           </div>
         </div>
       </div>
@@ -463,5 +459,92 @@
 <div class="toast-container"></div>
 <script src="components.js"></script>
 <script src="app.js"></script>
+<script>
+  // Tab filter for accessories page
+  document.querySelectorAll('#accTabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#accTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let count = 0;
+      document.querySelectorAll('#accProductGrid .product-card').forEach(card => {
+        const cats = card.dataset.category || '';
+        const show = filter === 'acc-all' || cats.includes(filter);
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      const countEl = document.querySelector('.collection-count strong');
+      if (countEl) countEl.textContent = count;
+    });
+  });
+
+  // Load More
+  const accMoreProducts = [
+    { id:'ac-m7', name:'Men Crossbody Bag', category:'acc-men acc-bags', price:1299, img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80', cat:'Men · Bags', rating:'★★★★★', count:'(167)', orig:'1,999', disc:'35% off', badge:'New' },
+    { id:'ac-w7', name:'Women Pearl Bracelet', category:'acc-women acc-jewellery', price:699, img:'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80', cat:'Women · Jewellery', rating:'★★★★★', count:'(312)', orig:'1,099', disc:'36% off', badge:'Trending' },
+    { id:'ac-m8', name:'Men Stainless Watch', category:'acc-men acc-jewellery', price:1999, img:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80', cat:'Men · Watches', rating:'★★★★★', count:'(234)', orig:'3,499', disc:'43% off', badge:'' },
+    { id:'ac-w8', name:'Women Clutch Purse', category:'acc-women acc-bags', price:1499, img:'https://images.unsplash.com/photo-1601924351433-3d7544f03dcc?w=400&q=80', cat:'Women · Bags', rating:'★★★★☆', count:'(145)', orig:'2,299', disc:'35% off', badge:'Sale' },
+    { id:'ac-k7', name:'Kids Sling Bag', category:'acc-kids acc-bags', price:449, img:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80', cat:'Kids · Bags', rating:'★★★★★', count:'(198)', orig:'699', disc:'36% off', badge:'New' },
+    { id:'ac-w9', name:'Floral Hair Pin Set', category:'acc-women', price:299, img:'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400&q=80', cat:'Women · Hair Accessories', rating:'★★★★★', count:'(276)', orig:'499', disc:'40% off', badge:'New' },
+  ];
+  let accLoaded = false;
+  document.getElementById('accLoadMore').addEventListener('click', () => {
+    if (accLoaded) { showToast('No more products to load', 'info'); return; }
+    const grid = document.getElementById('accProductGrid');
+    accMoreProducts.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.dataset.name = p.name.toLowerCase();
+      card.dataset.category = p.category;
+      card.dataset.price = p.price;
+      card.style.cssText = 'margin-bottom:20px';
+      card.innerHTML = `
+        <div class="product-image-wrapper">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80'" />
+          ${p.badge ? `<div class="product-badges"><span class="product-badge badge-new">${p.badge}</span></div>` : ''}
+          <div class="product-actions">
+            <button class="product-action-btn" data-wishlist="${p.id}" data-name="${p.name}" data-price="${p.price}">🤍</button>
+            <a href="product.html" class="product-action-btn">👁</a>
+          </div>
+          <div class="product-overlay"><button class="btn btn-primary btn-sm btn-add-cart" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}">Add to Cart</button></div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">${p.cat}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-rating"><span class="stars">${p.rating}</span><span class="rating-count">${p.count}</span></div>
+          <div class="product-price"><span class="price-current">₹${p.price.toLocaleString('en-IN')}</span><span class="price-original">₹${p.orig}</span><span class="price-discount">${p.disc}</span></div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    initWishlistButtons();
+    initCartButtons();
+    const countEl = document.querySelector('.collection-count strong');
+    if (countEl) countEl.textContent = grid.querySelectorAll('.product-card').length;
+    accLoaded = true;
+    const btn = document.getElementById('accLoadMore');
+    btn.textContent = 'All Products Loaded ✓';
+    btn.disabled = true;
+    showToast('6 more products loaded!', 'success');
+  });
+
+  // Sort
+  document.getElementById('accSortSelect')?.addEventListener('change', function () {
+    const grid = document.getElementById('accProductGrid');
+    // Collect all visible cards across all sub-sections
+    const cards = [...grid.querySelectorAll('.product-card')].filter(c => c.style.display !== 'none');
+    const val = this.value;
+    cards.sort((a, b) => {
+      const pa = parseFloat(a.dataset.price || 0);
+      const pb = parseFloat(b.dataset.price || 0);
+      if (val.includes('Low to High')) return pa - pb;
+      if (val.includes('High to Low')) return pb - pa;
+      const ra = (a.querySelector('.stars')?.textContent.match(/★/g) || []).length;
+      const rb = (b.querySelector('.stars')?.textContent.match(/★/g) || []).length;
+      if (val.includes('Top Rated')) return rb - ra;
+      return 0;
+    });
+    cards.forEach(c => grid.appendChild(c));
+  });
+</script>
 </body>
 </html>

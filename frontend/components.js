@@ -91,7 +91,7 @@ function getFooterHTML() {
         </div>
         <div>
           <h4 class="footer-heading">Contact</h4>
-          <div class="footer-contact-item"><i>📍</i><span>123 Fashion Street, Mumbai, Maharashtra 400001</span></div>
+          <div class="footer-contact-item"><i>📍</i><span>Ganapathy, Coimbatore, Tamil Nadu 641006</span></div>
           <div class="footer-contact-item"><i>📞</i><span>+91 98765 43210</span></div>
           <div class="footer-contact-item"><i>📧</i><span>support@askrclothing.com</span></div>
           <div class="footer-contact-item"><i>🕐</i><span>Mon–Sat: 9AM – 8PM IST</span></div>

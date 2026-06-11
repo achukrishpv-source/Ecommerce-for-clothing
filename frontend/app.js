@@ -389,15 +389,192 @@ function initSearch() {
   });
 }
 
-// ===== FILTER CHECKBOXES =====
+// ===== FILTER LOGIC =====
+function applyFilters() {
+  // Collect checked categories
+  const checkedCategories = [];
+  document.querySelectorAll('.filter-group').forEach(group => {
+    const title = group.querySelector('.filter-group-title')?.textContent?.trim().toLowerCase();
+    if (title === 'category' || title === 'age group') {
+      group.querySelectorAll('.filter-option input:checked').forEach(cb => {
+        const label = cb.closest('.filter-option')?.querySelector('label')?.textContent?.trim().toLowerCase();
+        if (label) checkedCategories.push(label);
+      });
+    }
+  });
+
+  // Collect max price
+  const priceRange = document.querySelector('.filter-sidebar input[type="range"]');
+  const maxPrice = priceRange ? parseFloat(priceRange.value) : Infinity;
+
+  // Collect selected sizes
+  const selectedSizes = [];
+  document.querySelectorAll('.size-option.active').forEach(s => selectedSizes.push(s.textContent.trim().toLowerCase()));
+
+  // Collect checked ratings
+  const checkedRatings = [];
+  document.querySelectorAll('.filter-group').forEach(group => {
+    const title = group.querySelector('.filter-group-title')?.textContent?.trim().toLowerCase();
+    if (title === 'rating') {
+      group.querySelectorAll('.filter-option input:checked').forEach(cb => {
+        const label = cb.closest('.filter-option')?.querySelector('label')?.textContent || '';
+        const match = label.match(/(\d+)\+?\s*stars?/i);
+        if (match) checkedRatings.push(parseInt(match[1]));
+      });
+    }
+  });
+
+  // Collect checked occasions
+  const checkedOccasions = [];
+  document.querySelectorAll('.filter-group').forEach(group => {
+    const title = group.querySelector('.filter-group-title')?.textContent?.trim().toLowerCase();
+    if (title === 'occasion') {
+      group.querySelectorAll('.filter-option input:checked').forEach(cb => {
+        const label = cb.closest('.filter-option')?.querySelector('label')?.textContent?.trim().toLowerCase();
+        if (label) checkedOccasions.push(label);
+      });
+    }
+  });
+
+  // Collect checked materials
+  const checkedMaterials = [];
+  document.querySelectorAll('.filter-group').forEach(group => {
+    const title = group.querySelector('.filter-group-title')?.textContent?.trim().toLowerCase();
+    if (title === 'material') {
+      group.querySelectorAll('.filter-option input:checked').forEach(cb => {
+        const label = cb.closest('.filter-option')?.querySelector('label')?.textContent?.trim().toLowerCase();
+        if (label) checkedMaterials.push(label);
+      });
+    }
+  });
+
+  // Collect checked discounts
+  const checkedDiscounts = [];
+  document.querySelectorAll('.filter-group').forEach(group => {
+    const title = group.querySelector('.filter-group-title')?.textContent?.trim().toLowerCase();
+    if (title === 'discount') {
+      group.querySelectorAll('.filter-option input:checked').forEach(cb => {
+        const label = cb.closest('.filter-option')?.querySelector('label')?.textContent || '';
+        const match = label.match(/(\d+)%/);
+        if (match) checkedDiscounts.push(parseInt(match[1]));
+      });
+    }
+  });
+
+  let visibleCount = 0;
+  document.querySelectorAll('.product-card').forEach(card => {
+    const cardCategory = (card.dataset.category || card.querySelector('.product-category')?.textContent || '').toLowerCase();
+    const cardPrice = parseFloat(card.dataset.price || card.querySelector('.price-current')?.textContent?.replace(/[₹,]/g, '') || 0);
+    const cardRatingEl = card.querySelector('.stars');
+    const cardRating = cardRatingEl ? (cardRatingEl.textContent.match(/★/g) || []).length : 5;
+    const cardOccasion = (card.dataset.occasion || card.dataset.name || '').toLowerCase();
+    const cardMaterial = (card.dataset.material || card.dataset.name || '').toLowerCase();
+    const cardDiscountEl = card.querySelector('.price-discount');
+    const cardDiscount = cardDiscountEl ? parseInt(cardDiscountEl.textContent) : 0;
+
+    let show = true;
+
+    // Category filter — skip if none checked or only "all" checked
+    if (checkedCategories.length > 0) {
+      const hasAll = checkedCategories.some(c => c.includes('all'));
+      if (!hasAll) {
+        const matchesCat = checkedCategories.some(c => cardCategory.includes(c) || (card.dataset.name || '').toLowerCase().includes(c));
+        if (!matchesCat) show = false;
+      }
+    }
+
+    // Price filter
+    if (cardPrice > maxPrice) show = false;
+
+    // Rating filter
+    if (checkedRatings.length > 0) {
+      const minRating = Math.min(...checkedRatings);
+      if (cardRating < minRating) show = false;
+    }
+
+    // Occasion filter
+    if (checkedOccasions.length > 0) {
+      const matchesOcc = checkedOccasions.some(o => cardOccasion.includes(o));
+      if (!matchesOcc) show = false;
+    }
+
+    // Material filter
+    if (checkedMaterials.length > 0) {
+      const matchesMat = checkedMaterials.some(m => cardMaterial.includes(m));
+      if (!matchesMat) show = false;
+    }
+
+    // Discount filter
+    if (checkedDiscounts.length > 0) {
+      const minDiscount = Math.min(...checkedDiscounts);
+      if (cardDiscount < minDiscount) show = false;
+    }
+
+    card.style.display = show ? '' : 'none';
+    if (show) visibleCount++;
+  });
+
+  // Update count display
+  const countEl = document.querySelector('.collection-count strong');
+  if (countEl) countEl.textContent = visibleCount;
+}
+
 function initFilters() {
+  // Clear all
   const filterClear = document.querySelector('.filter-clear');
   if (filterClear) {
     filterClear.addEventListener('click', () => {
       document.querySelectorAll('.filter-option input').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.size-option').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      const priceRange = document.querySelector('.filter-sidebar input[type="range"]');
+      if (priceRange) {
+        priceRange.value = priceRange.max;
+        const labels = priceRange.closest('.filter-group')?.querySelectorAll('.price-range-labels span');
+        if (labels && labels[1]) labels[1].textContent = '₹' + parseInt(priceRange.max).toLocaleString('en-IN');
+      }
       document.querySelectorAll('.product-card').forEach(c => c.style.display = '');
+      const countEl = document.querySelector('.collection-count strong');
+      if (countEl) countEl.textContent = document.querySelectorAll('.product-card').length;
     });
   }
+
+  // Apply button
+  const applyBtn = document.querySelector('.filter-sidebar .btn');
+  if (applyBtn) {
+    applyBtn.addEventListener('click', () => {
+      applyFilters();
+      showToast('Filters applied', 'success');
+    });
+  }
+
+  // Live price range update
+  const priceRange = document.querySelector('.filter-sidebar input[type="range"]');
+  if (priceRange) {
+    priceRange.addEventListener('input', () => {
+      const labels = priceRange.closest('.filter-group')?.querySelectorAll('.price-range-labels span');
+      if (labels && labels[1]) labels[1].textContent = '₹' + parseInt(priceRange.value).toLocaleString('en-IN');
+    });
+  }
+
+  // Category checkbox: uncheck "All" when specific is checked and vice versa
+  document.querySelectorAll('.filter-group').forEach(group => {
+    const title = group.querySelector('.filter-group-title')?.textContent?.trim().toLowerCase();
+    if (title === 'category' || title === 'age group') {
+      const checkboxes = group.querySelectorAll('.filter-option input');
+      checkboxes.forEach((cb, idx) => {
+        cb.addEventListener('change', () => {
+          if (idx === 0 && cb.checked) {
+            // "All" checked — uncheck others
+            checkboxes.forEach((c, i) => { if (i !== 0) c.checked = false; });
+          } else if (idx !== 0 && cb.checked) {
+            // Specific checked — uncheck "All"
+            checkboxes[0].checked = false;
+          }
+        });
+      });
+    }
+  });
 }
 
 // ===== COUPON CODE =====

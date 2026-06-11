@@ -35,12 +35,12 @@
 
   <section style="padding:32px 0 0;background:var(--charcoal);border-bottom:1px solid rgba(255,255,255,0.06)">
     <div class="container">
-      <div class="tabs">
-        <button class="tab-btn kids-tab active">All Kids</button>
-        <button class="tab-btn kids-tab">Boys Wear</button>
-        <button class="tab-btn kids-tab">Girls Wear</button>
-        <button class="tab-btn kids-tab">Infant Wear</button>
-        <button class="tab-btn kids-tab">School Wear</button>
+      <div class="tabs" id="kidsTabs">
+        <button class="tab-btn kids-tab active" data-filter="all">All Kids</button>
+        <button class="tab-btn kids-tab" data-filter="boys">Boys Wear</button>
+        <button class="tab-btn kids-tab" data-filter="girls">Girls Wear</button>
+        <button class="tab-btn kids-tab" data-filter="infant">Infant Wear</button>
+        <button class="tab-btn kids-tab" data-filter="school">School Wear</button>
       </div>
     </div>
   </section>
@@ -95,13 +95,13 @@
             <input type="text" placeholder="Search kids products..." class="search-filter-input" />
           </div>
           <div class="collection-header">
-            <span class="collection-count">Showing <strong class="sky-accent">180</strong> products</span>
-            <select class="sort-select"><option>Sort: Relevance</option><option>Newest First</option><option>Price: Low to High</option><option>Price: High to Low</option></select>
+            <span class="collection-count">Showing <strong class="sky-accent">6</strong> products</span>
+            <select class="sort-select" id="kidsSortSelect"><option>Sort: Relevance</option><option>Newest First</option><option>Price: Low to High</option><option>Price: High to Low</option></select>
           </div>
-          <div class="grid-3">
-            <div class="product-card" data-name="boys graphic t-shirt fun colorful">
+          <div class="grid-3" id="kidsProductGrid">
+            <div class="product-card" data-name="boys graphic t-shirt fun colorful" data-category="boys" data-price="399">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1519278409-1f56fdda7fe5?w=400&q=80" alt="Boys T-Shirt" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1519278409-1f56fdda7fe5?w=400&q=80" alt="Boys T-Shirt" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="k1" data-name="Boys Graphic Tee" data-price="399">🤍</button>
@@ -116,9 +116,9 @@
                 <div class="product-price"><span class="price-current">₹399</span><span class="price-original">₹599</span><span class="price-discount">33% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="girls frock dress princess floral pink">
+            <div class="product-card" data-name="girls frock dress princess floral pink" data-category="girls" data-price="699">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1476234251651-f353703a034d?w=400&q=80" alt="Girls Frock" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1476234251651-f353703a034d?w=400&q=80" alt="Girls Frock" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge badge-trending">Popular</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="k2" data-name="Princess Frock" data-price="699">🤍</button>
@@ -133,9 +133,9 @@
                 <div class="product-price"><span class="price-current">₹699</span><span class="price-original">₹999</span><span class="price-discount">30% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="infant onesie romper baby comfortable">
+            <div class="product-card" data-name="infant onesie romper baby comfortable" data-category="infant" data-price="499">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?w=400&q=80" alt="Infant" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?w=400&q=80" alt="Infant" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge badge-new">New</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="k3" data-name="Baby Romper Set" data-price="499">🤍</button>
@@ -150,9 +150,9 @@
                 <div class="product-price"><span class="price-current">₹499</span><span class="price-original">₹799</span><span class="price-discount">38% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="kids denim jeans boys casual wear">
+            <div class="product-card" data-name="kids denim jeans boys casual wear" data-category="boys" data-price="799">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=400&q=80" alt="Kids Jeans" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=400&q=80" alt="Kids Jeans" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80'"/>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="k4" data-name="Kids Denim Jeans" data-price="799">🤍</button>
                   <a href="product.html" class="product-action-btn">👁</a>
@@ -166,9 +166,9 @@
                 <div class="product-price"><span class="price-current">₹799</span><span class="price-original">₹1,199</span><span class="price-discount">33% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="girls leggings comfortable stretchy cute">
+            <div class="product-card" data-name="girls leggings comfortable stretchy cute" data-category="girls" data-price="349">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80" alt="Girls" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80" alt="Girls Leggings" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1476234251651-f353703a034d?w=400&q=80'"/>
                 <div class="product-badges"><span class="product-badge badge-sale">Sale</span></div>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="k5" data-name="Girls Leggings Set" data-price="349">🤍</button>
@@ -183,9 +183,9 @@
                 <div class="product-price"><span class="price-current">₹349</span><span class="price-original">₹549</span><span class="price-discount">36% off</span></div>
               </div>
             </div>
-            <div class="product-card" data-name="kids sweatshirt cozy warm winter pullover">
+            <div class="product-card" data-name="kids sweatshirt cozy warm winter pullover" data-category="school" data-price="899">
               <div class="product-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=400&q=80" alt="Sweatshirt" loading="lazy"/>
+                <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=400&q=80" alt="Kids Sweatshirt" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1519278409-1f56fdda7fe5?w=400&q=80'"/>
                 <div class="product-actions">
                   <button class="product-action-btn" data-wishlist="k6" data-name="Kids Sweatshirt" data-price="899">🤍</button>
                   <a href="product.html" class="product-action-btn">👁</a>
@@ -201,7 +201,7 @@
             </div>
           </div>
           <div style="text-align:center;margin-top:40px">
-            <button class="btn sky-btn btn-lg" style="border-radius:8px" onclick="showToast('Loading more products...','info')">Load More ›</button>
+            <button class="btn sky-btn btn-lg" id="kidsLoadMore" style="border-radius:8px">Load More ›</button>
           </div>
         </div>
       </div>
@@ -212,5 +212,85 @@
 <div class="toast-container"></div>
 <script src="components.js"></script>
 <script src="app.js"></script>
+<script>
+  // Tab filter for kids page
+  document.querySelectorAll('#kidsTabs .tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#kidsTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let count = 0;
+      document.querySelectorAll('#kidsProductGrid .product-card').forEach(card => {
+        const cat = card.dataset.category || '';
+        const show = filter === 'all' || cat === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      const countEl = document.querySelector('.collection-count strong');
+      if (countEl) countEl.textContent = count;
+    });
+  });
+
+  // Load More
+  const kidsMoreProducts = [
+    { id:'k7', name:'Boys Cargo Shorts', category:'boys', price:449, img:'https://images.unsplash.com/photo-1519278409-1f56fdda7fe5?w=400&q=80', cat:'Boys Wear · 5–12Y', rating:'★★★★★', count:'(112)', orig:'699', disc:'36% off', badge:'New' },
+    { id:'k8', name:'Girls Floral Dress', category:'girls', price:599, img:'https://images.unsplash.com/photo-1476234251651-f353703a034d?w=400&q=80', cat:'Girls Wear · 3–8Y', rating:'★★★★★', count:'(156)', orig:'999', disc:'40% off', badge:'Trending' },
+    { id:'k9', name:'Baby Bodysuit Set', category:'infant', price:399, img:'https://images.unsplash.com/photo-1522771930-78848d9293e8?w=400&q=80', cat:'Infant · 0–2Y', rating:'★★★★★', count:'(87)', orig:'649', disc:'39% off', badge:'New' },
+    { id:'k10', name:'Kids School Uniform Set', category:'school', price:899, img:'https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=400&q=80', cat:'School Wear · 5–14Y', rating:'★★★★☆', count:'(203)', orig:'1,299', disc:'31% off', badge:'' },
+    { id:'k11', name:'Girls Embroidered Kurti', category:'girls', price:499, img:'https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80', cat:'Girls Wear · 4–12Y', rating:'★★★★★', count:'(134)', orig:'799', disc:'38% off', badge:'Sale' },
+    { id:'k12', name:'Boys Printed Hoodie', category:'boys', price:799, img:'https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?w=400&q=80', cat:'Boys Wear · 6–14Y', rating:'★★★★★', count:'(91)', orig:'1,199', disc:'33% off', badge:'New' },
+  ];
+  let kidsLoaded = false;
+  document.getElementById('kidsLoadMore').addEventListener('click', () => {
+    if (kidsLoaded) { showToast('No more products to load', 'info'); return; }
+    const grid = document.getElementById('kidsProductGrid');
+    kidsMoreProducts.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.dataset.name = p.name.toLowerCase();
+      card.dataset.category = p.category;
+      card.dataset.price = p.price;
+      card.innerHTML = `
+        <div class="product-image-wrapper">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80'" />
+          ${p.badge ? `<div class="product-badges"><span class="product-badge badge-new">${p.badge}</span></div>` : ''}
+          <div class="product-actions">
+            <button class="product-action-btn" data-wishlist="${p.id}" data-name="${p.name}" data-price="${p.price}">🤍</button>
+            <a href="product.html" class="product-action-btn">👁</a>
+          </div>
+          <div class="product-overlay"><button class="btn sky-btn btn-sm btn-add-cart" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}" style="width:100%;border-radius:6px">Add to Cart</button></div>
+        </div>
+        <div class="product-info">
+          <div class="product-category sky-accent">${p.cat}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-rating"><span class="stars">${p.rating}</span><span class="rating-count">${p.count}</span></div>
+          <div class="product-price"><span class="price-current">₹${p.price.toLocaleString('en-IN')}</span><span class="price-original">₹${p.orig}</span><span class="price-discount">${p.disc}</span></div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    initWishlistButtons();
+    initCartButtons();
+    const countEl = document.querySelector('.collection-count strong');
+    if (countEl) countEl.textContent = grid.querySelectorAll('.product-card:not([style*="none"])').length;
+    kidsLoaded = true;
+    const btn = document.getElementById('kidsLoadMore');
+    btn.textContent = 'All Products Loaded ✓';
+    btn.disabled = true;
+    showToast('6 more products loaded!', 'success');
+  });
+
+    const grid = document.getElementById('kidsProductGrid');
+    const cards = [...grid.querySelectorAll('.product-card')].filter(c => c.style.display !== 'none');
+    const val = this.value;
+    cards.sort((a, b) => {
+      const pa = parseFloat(a.dataset.price || 0);
+      const pb = parseFloat(b.dataset.price || 0);
+      if (val.includes('Low to High')) return pa - pb;
+      if (val.includes('High to Low')) return pb - pa;
+      return 0;
+    });
+    cards.forEach(c => grid.appendChild(c));
+  });
+</script>
 </body>
 </html>
