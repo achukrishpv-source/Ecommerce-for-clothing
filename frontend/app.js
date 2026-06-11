@@ -208,14 +208,26 @@ function initCartButtons() {
   document.querySelectorAll('.btn-add-cart').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      const id = btn.dataset.id;
+      const existing = ASKR.cart.find(i => i.id === id && i.size === (btn.dataset.size || 'M'));
       ASKR.addToCart({
-        id: btn.dataset.id,
+        id,
         name: btn.dataset.name || 'Product',
         price: parseFloat(btn.dataset.price || 0),
         image: btn.dataset.image || '',
         size: btn.dataset.size || 'M',
         color: btn.dataset.color || 'Default'
       });
+      if (existing) {
+        btn.textContent = `In Cart (${existing.qty + 1})`;
+      } else {
+        btn.textContent = 'In Cart (1)';
+      }
+      btn.style.background = 'var(--gold)';
+      setTimeout(() => {
+        btn.textContent = 'Add to Cart';
+        btn.style.background = '';
+      }, 1500);
     });
   });
 }
@@ -231,8 +243,83 @@ function initQtyControls() {
       if (btn.dataset.action === 'dec') val = Math.max(val - 1, 1);
       input.value = val;
       input.dispatchEvent(new Event('change'));
+      // sync to ASKR cart if on cart page
+      const cartItem = btn.closest('.cart-item');
+      if (cartItem) {
+        const id = cartItem.dataset.id;
+        const size = cartItem.dataset.size;
+        const item = ASKR.cart.find(i => i.id === id && i.size === size);
+        if (item) {
+          item.qty = val;
+          ASKR.saveCart();
+          ASKR.updateCartBadge();
+          updateCartSummary();
+          const priceEl = cartItem.querySelector('.cart-item-price');
+          if (priceEl) priceEl.textContent = '₹' + (item.price * val).toLocaleString('en-IN');
+        }
+      }
     });
   });
+}
+
+// ===== RENDER CART PAGE =====
+function renderCart() {
+  const container = document.getElementById('cart-items-container');
+  if (!container) return;
+
+  if (ASKR.cart.length === 0) {
+    container.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--gray-600)">
+      <div style="font-size:4rem;margin-bottom:16px">🛒</div>
+      <h3 style="color:var(--ivory)">Your cart is empty</h3>
+      <a href="home.html" class="btn btn-primary" style="margin-top:20px">Continue Shopping</a>
+    </div>`;
+    updateCartSummary();
+    return;
+  }
+
+  container.innerHTML = ASKR.cart.map(item => `
+    <div class="cart-item" data-id="${item.id}" data-size="${item.size}">
+      <div class="cart-item-img"><img src="${item.image || 'https://via.placeholder.com/100'}" alt="${item.name}"/></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-variant">Size: ${item.size} &nbsp;|&nbsp; Color: ${item.color}</div>
+        <div class="qty-control">
+          <button class="qty-btn" data-action="dec">−</button>
+          <input type="number" class="qty-input" value="${item.qty}" min="1" max="10" readonly />
+          <button class="qty-btn" data-action="inc">+</button>
+        </div>
+      </div>
+      <div style="text-align:right;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end">
+        <div class="cart-item-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+        <div class="cart-item-remove" onclick="removeCartItem('${item.id}','${item.size}')">🗑️ Remove</div>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('cart-count-label').textContent = `(${ASKR.cart.length} item${ASKR.cart.length > 1 ? 's' : ''})`;
+  updateCartSummary();
+  initQtyControls();
+}
+
+function removeCartItem(id, size) {
+  ASKR.removeFromCart(id, size);
+  renderCart();
+  showToast('Item removed', 'info');
+}
+
+function updateCartSummary() {
+  const subtotalEl = document.getElementById('cart-subtotal');
+  const totalEl = document.getElementById('cart-total');
+  const taxEl = document.getElementById('cart-tax');
+  const itemCountEl = document.getElementById('cart-item-count');
+  if (!subtotalEl) return;
+  const subtotal = ASKR.getCartTotal();
+  const tax = Math.round(subtotal * 0.05);
+  const total = subtotal + tax;
+  subtotalEl.textContent = '₹' + subtotal.toLocaleString('en-IN');
+  if (taxEl) taxEl.textContent = '₹' + tax.toLocaleString('en-IN');
+  if (totalEl) totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+  if (itemCountEl) itemCountEl.textContent = `${ASKR.cart.length} item${ASKR.cart.length > 1 ? 's' : ''}`;
 }
 
 // ===== GALLERY (Product Detail) =====
@@ -381,4 +468,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCoupon();
   initForms();
   initDeliveryOptions();
+  renderCart();
 });

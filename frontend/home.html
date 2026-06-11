@@ -26,8 +26,10 @@
     .marquee-dot { color:rgba(255,255,255,0.5);font-size:0.5rem; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    .categories-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
-    .cat-card-wide { grid-column:span 2; }
+    .categories-grid { display:grid;grid-template-columns:repeat(5,1fr);gap:20px; }
+    .cat-card-wide { grid-column:span 1; }
+    @media(max-width:1100px){ .categories-grid{grid-template-columns:repeat(3,1fr);} }
+    @media(max-width:600px){ .categories-grid{grid-template-columns:repeat(2,1fr);} }
 
     .trending-strip { display:flex;gap:24px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory; }
     .trending-strip::-webkit-scrollbar { height:4px; }
@@ -39,8 +41,8 @@
 
     .testimonials-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
 
-    @media(max-width:1024px){ .hero-grid{grid-template-columns:1fr;} .categories-grid{grid-template-columns:repeat(2,1fr);} .cat-card-wide{grid-column:span 2;} .testimonials-grid{grid-template-columns:repeat(2,1fr);} }
-    @media(max-width:768px){ .categories-grid,.testimonials-grid{grid-template-columns:1fr;} .cat-card-wide{grid-column:span 1;} }
+    @media(max-width:1024px){ .hero-grid{grid-template-columns:1fr;} .testimonials-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:768px){ .testimonials-grid{grid-template-columns:1fr;} }
   </style>
 </head>
 <body>
@@ -118,15 +120,6 @@
         <div class="section-divider"></div>
       </div>
       <div class="categories-grid reveal">
-        <div class="category-card cat-card-wide">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Women" loading="lazy" />
-          <div class="category-overlay"></div>
-          <div class="category-content">
-            <div class="category-name">Women's</div>
-            <div class="category-count">320+ Styles</div>
-          </div>
-          <a href="women.html" class="category-arrow">→</a>
-        </div>
         <div class="category-card">
           <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&q=80" alt="Men" loading="lazy" />
           <div class="category-overlay"></div>
@@ -135,6 +128,15 @@
             <div class="category-count">280+ Styles</div>
           </div>
           <a href="men.html" class="category-arrow">→</a>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="Women" loading="lazy" />
+          <div class="category-overlay"></div>
+          <div class="category-content">
+            <div class="category-name">Women's</div>
+            <div class="category-count">320+ Styles</div>
+          </div>
+          <a href="women.html" class="category-arrow">→</a>
         </div>
         <div class="category-card">
           <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=600&q=80" alt="Kids" loading="lazy" />
@@ -152,7 +154,7 @@
             <div class="category-name">Accessories</div>
             <div class="category-count">120+ Items</div>
           </div>
-          <a href="home.html" class="category-arrow">→</a>
+          <a href="accessories.html" class="category-arrow">→</a>
         </div>
         <div class="category-card">
           <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?w=600&q=80" alt="Sale" loading="lazy" />
@@ -161,7 +163,7 @@
             <div class="category-name" style="color:var(--white)">Sale 🔥</div>
             <div class="category-count" style="color:var(--orange-light)">Up to 70% Off</div>
           </div>
-          <a href="home.html" class="category-arrow">→</a>
+          <a href="men.html" class="category-arrow">→</a>
         </div>
       </div>
     </div>

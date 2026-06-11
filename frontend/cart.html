@@ -21,63 +21,14 @@
         <!-- CART ITEMS -->
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-            <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory)">Cart Items <span style="color:var(--gray-600);font-size:0.9rem;font-weight:400">(3 items)</span></h3>
-            <button class="btn btn-sm btn-secondary" onclick="showToast('Cart cleared','info')">Clear Cart</button>
+            <h3 style="font-size:1.1rem;font-weight:700;color:var(--ivory)">Cart Items <span id="cart-count-label" style="color:var(--gray-600);font-size:0.9rem;font-weight:400"></span></h3>
+            <button class="btn btn-sm btn-secondary" onclick="ASKR.cart=[];ASKR.saveCart();ASKR.updateCartBadge();renderCart();showToast('Cart cleared','info')">Clear Cart</button>
           </div>
 
-          <div class="cart-item">
-            <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=300&q=80" alt="Hoodie"/></div>
-            <div class="cart-item-info">
-              <div class="cart-item-name">Urban Black Premium Hoodie</div>
-              <div class="cart-item-variant">Size: M &nbsp;|&nbsp; Color: Deep Black</div>
-              <div class="qty-control">
-                <button class="qty-btn" data-action="dec">−</button>
-                <input type="number" class="qty-input" value="1" min="1" max="10" readonly />
-                <button class="qty-btn" data-action="inc">+</button>
-              </div>
-            </div>
-            <div style="text-align:right;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end">
-              <div class="cart-item-price">₹1,299</div>
-              <div class="cart-item-remove" onclick="this.closest('.cart-item').remove();showToast('Item removed','info')">🗑️ Remove</div>
-            </div>
-          </div>
-
-          <div class="cart-item">
-            <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=300&q=80" alt="Dress"/></div>
-            <div class="cart-item-info">
-              <div class="cart-item-name">Flowy Summer Dress</div>
-              <div class="cart-item-variant">Size: S &nbsp;|&nbsp; Color: Blue Floral</div>
-              <div class="qty-control">
-                <button class="qty-btn" data-action="dec">−</button>
-                <input type="number" class="qty-input" value="1" min="1" max="10" readonly />
-                <button class="qty-btn" data-action="inc">+</button>
-              </div>
-            </div>
-            <div style="text-align:right;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end">
-              <div class="cart-item-price">₹1,199</div>
-              <div class="cart-item-remove" onclick="this.closest('.cart-item').remove();showToast('Item removed','info')">🗑️ Remove</div>
-            </div>
-          </div>
-
-          <div class="cart-item">
-            <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300&q=80" alt="Jeans"/></div>
-            <div class="cart-item-info">
-              <div class="cart-item-name">Slim Fit Premium Denim</div>
-              <div class="cart-item-variant">Size: 32 &nbsp;|&nbsp; Color: Dark Wash</div>
-              <div class="qty-control">
-                <button class="qty-btn" data-action="dec">−</button>
-                <input type="number" class="qty-input" value="2" min="1" max="10" readonly />
-                <button class="qty-btn" data-action="inc">+</button>
-              </div>
-            </div>
-            <div style="text-align:right;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end">
-              <div class="cart-item-price">₹3,198</div>
-              <div class="cart-item-remove" onclick="this.closest('.cart-item').remove();showToast('Item removed','info')">🗑️ Remove</div>
-            </div>
-          </div>
+          <div id="cart-items-container"></div>
 
           <div style="margin-top:20px;padding:16px 20px;background:rgba(255,107,0,0.06);border:1px solid rgba(255,107,0,0.15);border-radius:12px;font-size:0.85rem;color:var(--gray-600);display:flex;gap:10px;align-items:center">
-            <span>🎁</span><span>Add ₹504 more to get <strong style="color:var(--orange)">FREE Delivery!</strong></span>
+            <span>🎁</span><span>Free delivery on all orders!</span>
           </div>
           <div style="margin-top:20px">
             <a href="home.html" style="color:var(--orange);font-size:0.88rem;font-weight:500">← Continue Shopping</a>
@@ -91,11 +42,11 @@
             <input type="text" class="form-control coupon-code-input" placeholder="Coupon Code (ASKR10)" />
             <button class="btn btn-outline-orange btn-sm apply-coupon">Apply</button>
           </div>
-          <div class="summary-row"><span class="label">Subtotal (3 items)</span><span class="value">₹5,696</span></div>
-          <div class="summary-row summary-discount" style="display:none"><span class="label" style="color:#4CAF50">Coupon Discount</span><span class="value" style="color:#4CAF50">− ₹569</span></div>
+          <div class="summary-row"><span class="label">Subtotal (<span id="cart-item-count"></span>)</span><span class="value" id="cart-subtotal">₹0</span></div>
+          <div class="summary-row summary-discount" style="display:none"><span class="label" style="color:#4CAF50">Coupon Discount</span><span class="value" style="color:#4CAF50">− ₹0</span></div>
           <div class="summary-row"><span class="label">Delivery</span><span class="value" style="color:#4CAF50">FREE</span></div>
-          <div class="summary-row"><span class="label">Tax (GST 5%)</span><span class="value">₹284</span></div>
-          <div class="summary-row total"><span class="label">Total</span><span class="value">₹5,980</span></div>
+          <div class="summary-row"><span class="label">Tax (GST 5%)</span><span class="value" id="cart-tax">₹0</span></div>
+          <div class="summary-row total"><span class="label">Total</span><span class="value" id="cart-total">₹0</span></div>
           <a href="checkout.html" class="btn btn-primary btn-lg" style="width:100%;margin-top:20px;justify-content:center">Proceed to Checkout →</a>
           <div class="security-badges" style="justify-content:center;margin-top:16px">
             <div class="security-badge">🔒 SSL Secure</div>
