@@ -132,6 +132,7 @@
 </div>
 <div id="footer-container"></div>
 <div class="toast-container"></div>
+<script src="api.config.js"></script>
 <script src="components.js"></script>
 <script src="app.js"></script>
 <script>
@@ -167,13 +168,55 @@ document.addEventListener('DOMContentLoaded', () => {
 function processPayment(btn) {
   const method = document.querySelector('.payment-method.selected input[type="radio"]')?.value || 'upi';
   const methodNames = { upi: 'UPI', card: 'Credit/Debit Card', netbank: 'Net Banking', cod: 'Cash on Delivery' };
-  sessionStorage.setItem('askr_pay_method', methodNames[method] || 'UPI');
+  const payMethod = methodNames[method] || 'UPI';
+  const data = JSON.parse(sessionStorage.getItem('askr_checkout') || 'null');
+  const cart = JSON.parse(localStorage.getItem('askr_cart') || '[]');
+  const token = localStorage.getItem('askr_token');
+
   btn.innerHTML = '\u23f3 Processing...';
   btn.disabled = true;
-  setTimeout(() => {
-    sessionStorage.removeItem('askr_checkout');
-    window.location.href = 'order-success.html';
-  }, 1800);
+
+  sessionStorage.setItem('askr_pay_method', payMethod);
+
+  // If user is logged in, save order to backend
+  if (token && data && cart.length > 0) {
+    const orderPayload = {
+      items: cart.map(i => ({ productId: i.id, name: i.name, price: i.price, image: i.image || '', size: i.size, color: i.color, qty: i.qty })),
+      address: {
+        name:    data.address?.name    || '',
+        phone:   data.address?.phone   || '',
+        street:  data.address?.street  || '',
+        city:    data.address?.city    || '',
+        state:   data.address?.state   || '',
+        pincode: data.address?.pin     || ''
+      },
+      payment: { method: payMethod, status: method === 'cod' ? 'pending' : 'paid' },
+      total: data.total
+    };
+
+    fetch((window.API_BASE || 'http://localhost:5000') + '/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify(orderPayload)
+    })
+    .then(r => r.json())
+    .then(order => {
+      if (order._id) sessionStorage.setItem('askr_order_id', order._id);
+      sessionStorage.removeItem('askr_checkout');
+      window.location.href = 'order-success.html';
+    })
+    .catch(() => {
+      // fallback: still go to success page even if API fails
+      sessionStorage.removeItem('askr_checkout');
+      window.location.href = 'order-success.html';
+    });
+  } else {
+    // Guest checkout — just redirect
+    setTimeout(() => {
+      sessionStorage.removeItem('askr_checkout');
+      window.location.href = 'order-success.html';
+    }, 1800);
+  }
 }
 </script>
 </body>

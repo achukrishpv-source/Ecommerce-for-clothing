@@ -1,5 +1,34 @@
 // ===== ASKR CLOTHING - GLOBAL JAVASCRIPT =====
 
+// API base URL — reads from window if set by env, else defaults to localhost
+window.API_BASE = window.API_BASE || 'http://localhost:5000';
+
+// ===== BACKEND SYNC HELPERS =====
+async function apiPost(path, body) {
+  const token = localStorage.getItem('askr_token');
+  if (!token) return null;
+  try {
+    const r = await fetch(window.API_BASE + path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+      body: JSON.stringify(body)
+    });
+    return r.ok ? r.json() : null;
+  } catch { return null; }
+}
+
+async function apiDelete(path) {
+  const token = localStorage.getItem('askr_token');
+  if (!token) return null;
+  try {
+    const r = await fetch(window.API_BASE + path, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+    return r.ok ? r.json() : null;
+  } catch { return null; }
+}
+
 // ===== CART & WISHLIST STATE =====
 const ASKR = {
   cart: JSON.parse(localStorage.getItem('askr_cart') || '[]'),
@@ -16,12 +45,16 @@ const ASKR = {
     this.saveCart();
     this.updateCartBadge();
     showToast(`${product.name} added to cart!`, 'success');
+    // Sync to backend
+    apiPost('/api/cart', { productId: product.id, name: product.name, price: product.price, image: product.image || '', size: product.size || 'M', color: product.color || 'Default' });
   },
 
   removeFromCart(id, size) {
     this.cart = this.cart.filter(i => !(i.id === id && i.size === size));
     this.saveCart();
     this.updateCartBadge();
+    // Sync to backend
+    apiDelete('/api/cart/' + id);
   },
 
   toggleWishlist(product) {
@@ -31,12 +64,14 @@ const ASKR = {
       this.saveWishlist();
       this.updateWishlistBadge();
       showToast(`${product.name} removed from wishlist`, 'info');
+      apiDelete('/api/wishlist/' + product.id);
       return false;
     } else {
       this.wishlist.push(product);
       this.saveWishlist();
       this.updateWishlistBadge();
       showToast(`${product.name} added to wishlist!`, 'success');
+      apiPost('/api/wishlist', { productId: product.id, name: product.name, price: product.price, image: product.image || '', category: product.category || '' });
       return true;
     }
   },
